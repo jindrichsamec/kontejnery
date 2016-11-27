@@ -22,6 +22,7 @@ setup(
         "flask-admin",
         "flask-migrate",
         "flask-bootstrap",
+        "flask-restful",
         "passlib"
     ],
     tests_require=['pytest'],
