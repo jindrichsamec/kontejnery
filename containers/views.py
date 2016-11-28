@@ -10,15 +10,16 @@ __all__ = ('ContainerDetail', 'ContainerList')
 
 
 class ContainerDetail(Resource):
-    def get(self, user_id):
+    def get(self, container_id):
         try:
-            data = get_container(user_id)
+            data = get_container(container_id)
             return {'status_code': 200, 'data': data}
-        except UserNotFound:
+        except ContainerNotFound:
             return {'status_code': 404}, 404
         except UnspecifiedError as e:
             return {'status_code': 500, 'info': str(e)}, 500
 
 class ContainerList(Resource):
     def get(self):
-        return {'status_code': 200, 'data': ['List of containers']}
+        data = list_containers()
+        return {'status_code': 200, 'data': data}

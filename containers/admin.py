@@ -5,5 +5,5 @@ from containers.models.container import Container
 
 def register_admin(app):
 
-  admin = Admin(app, name='workshop', template_mode='bootstrap3')
+  admin = Admin(app, name='Kontejnery.info', template_mode='bootstrap3')
   admin.add_view(ModelView(Container, app.db.session))

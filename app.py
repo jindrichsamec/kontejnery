@@ -16,4 +16,5 @@ def create_app():
   register_bootstrap(app)
 
   register_admin(app)
+  register_container(app)
   return app
