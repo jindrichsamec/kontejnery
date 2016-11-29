@@ -1,4 +1,4 @@
-from .models.container import Container
+from .models import Container, Term
 from .exceptions import ContainerNotFound
 
 def get_container(container_id):

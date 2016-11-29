@@ -1,9 +1,12 @@
 from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 
-from containers.models.container import Container
+from containers.models import Container, Term
 
 def register_admin(app):
 
-  admin = Admin(app, name='Kontejnery.info', template_mode='bootstrap3')
-  admin.add_view(ModelView(Container, app.db.session))
+    class MyView(ModelView):
+        inline_models = (Term, )
+
+    admin = Admin(app, name='Kontejnery.info')
+    admin.add_view(MyView(Container, app.db.session))
