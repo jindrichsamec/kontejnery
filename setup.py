@@ -23,7 +23,8 @@ setup(
         "flask-migrate",
         "flask-bootstrap",
         "flask-restful",
-        "passlib"
+        "passlib",
+        "bs4"
     ],
     tests_require=['pytest'],
 )
