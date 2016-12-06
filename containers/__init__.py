@@ -1,5 +1,7 @@
+import click
 from flask import Blueprint
 from flask_restful import Api
+from containers.controls.crawler import run_crawler
 
 from .views import *
 
@@ -14,3 +16,8 @@ def register_container(app):
     #user_blueprint.add_url_rule('/list', view_func=user_listing, endpoint='web_user_listing')
     #user_blueprint.add_url_rule('/<int:user_id>', view_func=user_detail, endpoint='web_user_detail')
     #app.register_blueprint(user_blueprint)
+
+    @app.cli.command()
+    def crawler():
+        """Run crawler and updates list of containers"""
+        run_crawler()

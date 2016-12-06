@@ -9,6 +9,5 @@ class Container(db.Model):
     slug = db.Column(db.String(255), nullable=False)
     position = db.Column(db.String, index=True)
 
-
     def __repr__(self):
         return '<Container #{}: {}>'.format(self.id, self.slug)

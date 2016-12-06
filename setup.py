@@ -24,7 +24,9 @@ setup(
         "flask-bootstrap",
         "flask-restful",
         "passlib",
-        "bs4"
+        "bs4",
+        'python-slugify',
+        'requests'
     ],
     tests_require=['pytest'],
 )
