@@ -19,14 +19,17 @@ setup(
     install_requires=[
         "flask",
         "flask-sqlalchemy",
-        "flask-admin",
+        "flask-admin==1.3.0",
         "flask-migrate",
         "flask-bootstrap",
         "flask-restful",
         "passlib",
         "bs4",
         'python-slugify',
-        'requests'
+        'requests',
+        'geoalchemy2',
+        'psycopg2',
+        'shapely'
     ],
     tests_require=['pytest'],
 )

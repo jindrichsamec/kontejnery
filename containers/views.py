@@ -3,7 +3,7 @@ import traceback
 from flask import jsonify, g, request, render_template
 from flask_restful import Resource
 
-from .control import get_container, list_containers
+from .controls.container import get_container, list_containers
 from .exceptions import ContainerNotFound, UnspecifiedError, InvalidArguments
 
 __all__ = ('ContainerDetail', 'ContainerList')
