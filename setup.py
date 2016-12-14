@@ -29,7 +29,7 @@ setup(
         'requests',
         'geoalchemy2',
         'psycopg2',
-        'shapely==1.5.9'
+        'shapely'
     ],
     tests_require=['pytest'],
 )
