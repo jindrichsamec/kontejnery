@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 
 import { FormGroup, FormControl, Button } from 'react-bootstrap'
 
-const SearchForm = (props) => {
+const SearchForm = ({ onSearch, onLocate}) => {
   return(
     <div className="card card-block controller" >
       <FormGroup>
@@ -13,11 +13,16 @@ const SearchForm = (props) => {
           <option value="nextweek">Příští týden</option>
           <option value="all">Vše</option>
         </FormControl>
-        <Button type="button" bsStyle="primary">Search</Button>
-        <Button type="button" bsStyle="success">Locate</Button>
+        <Button type="button" bsStyle="primary" onClick={onSearch}>Search</Button>
+        <Button type="button" bsStyle="success" onClick={onLocate}>Locate</Button>
       </FormGroup>
     </div>
   )
+}
+
+SearchForm.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+  onLocate: PropTypes.func.isRequired
 }
 
 export default SearchForm

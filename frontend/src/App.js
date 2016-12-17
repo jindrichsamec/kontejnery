@@ -12,14 +12,23 @@ export default class App extends Component {
     apiKey: 'AIzaSyC8NUe06Wy66Vf-4-tTIzobuGm4GXIdBDI',
   }
 
+  _handleSearch = (when) => {
+    console.info('Search', when);
+  }
+
+  _handleLocate = () => {
+    console.info('Locate...');
+  }
+
   render() {
     const { defaultCenter, defaultZoom, apiKey } = this.props;
     const bootstrapURLKeys = {
       key: apiKey,
     };
+
     return (
       <div>
-        <SearchForm />
+        <SearchForm onSearch={this._handleSearch} onLocate={this._handleLocate} />
         <div className="map">
           <GoogleMap
             bootstrapURLKeys={bootstrapURLKeys}
