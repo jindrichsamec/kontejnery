@@ -1,5 +1,5 @@
 import React, { PropTypes } from 'react'
-
+import GeoLocateButton from './GeoLocateButton';
 import { FormGroup, FormControl, Button } from 'react-bootstrap'
 
 const SearchForm = ({ onSearch, onLocate}) => {
@@ -14,7 +14,7 @@ const SearchForm = ({ onSearch, onLocate}) => {
           <option value="all">Vše</option>
         </FormControl>
         <Button type="button" bsStyle="primary" onClick={onSearch}>Search</Button>
-        <Button type="button" bsStyle="success" onClick={onLocate}>Locate</Button>
+        <GeoLocateButton onLocate={onLocate}/>
       </FormGroup>
     </div>
   )
@@ -22,7 +22,8 @@ const SearchForm = ({ onSearch, onLocate}) => {
 
 SearchForm.propTypes = {
   onSearch: PropTypes.func.isRequired,
-  onLocate: PropTypes.func.isRequired
+  onLocate: PropTypes.func.isRequired,
+
 }
 
 export default SearchForm

@@ -16,8 +16,8 @@ export default class App extends Component {
     console.info('Search', when);
   }
 
-  _handleLocate = () => {
-    console.info('Locate...');
+  _handleLocate = (lng, lat) => {
+    console.info('Locate...', lng, lat);
   }
 
   render() {
