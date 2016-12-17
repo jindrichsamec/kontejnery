@@ -28,7 +28,6 @@ export default observer(class App extends Component {
 
   _handleLocate = (lat, lng) => {
     this.obState.center = {lat, lng}
-    console.info('Locate...', this.obState.center);
   }
 
   render() {
