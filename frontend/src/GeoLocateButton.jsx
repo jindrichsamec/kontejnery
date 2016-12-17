@@ -10,7 +10,7 @@ export default class GeoLocationButton extends Component {
 
   _handleSuccess = (position) => {
     const { latitude, longitude } = position.coords;
-    this.props.onLocate(longitude, latitude);
+    this.props.onLocate(latitude, longitude);
   }
 
   _handleFail = (error) => {

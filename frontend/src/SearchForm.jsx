@@ -23,7 +23,6 @@ const SearchForm = ({ onSearch, onLocate}) => {
 SearchForm.propTypes = {
   onSearch: PropTypes.func.isRequired,
   onLocate: PropTypes.func.isRequired,
-
 }
 
 export default SearchForm
