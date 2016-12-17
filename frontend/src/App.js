@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMap from 'google-map-react';
 import './App.css';
 import Container from './Container'
+import SearchForm from './SearchForm';
 
 export default class App extends Component {
 
@@ -17,12 +18,17 @@ export default class App extends Component {
       key: apiKey,
     };
     return (
-      <GoogleMap
-        bootstrapURLKeys={bootstrapURLKeys}
-        defaultCenter={defaultCenter}
-        defaultZoom={defaultZoom} >
-        <Container />
-      </GoogleMap>
+      <div>
+        <SearchForm />
+        <div className="map">
+          <GoogleMap
+            bootstrapURLKeys={bootstrapURLKeys}
+            defaultCenter={defaultCenter}
+            defaultZoom={defaultZoom} >
+            <Container />
+          </GoogleMap>
+        </div>
+      </div>
     );
   }
 }

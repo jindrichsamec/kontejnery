@@ -1,9 +1,10 @@
 import React from 'react';
+import { Glyphicon } from 'react-bootstrap'
 
 const Container = (props) => {
   return(
     <div>
-      Container
+      <Glyphicon glyph="star" />X
     </div>
   )
 }
