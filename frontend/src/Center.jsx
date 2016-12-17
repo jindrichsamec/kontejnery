@@ -1,11 +1,8 @@
 import React from 'react'
+import Icon from './Icon'
 
 const Center = (props) => {
-  return(
-    <div>
-      X
-    </div>
-  )
+  return <Icon name="map-marker" />
 }
 
 export default Center;

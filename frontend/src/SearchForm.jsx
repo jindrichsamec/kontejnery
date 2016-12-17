@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
-import GeoLocateButton from './GeoLocateButton';
+import GeoLocateButton from './GeoLocateButton'
+import Icon from './Icon'
 import { FormGroup, FormControl, Button } from 'react-bootstrap'
 
 const SearchForm = ({ onSearch, onLocate}) => {
@@ -13,7 +14,9 @@ const SearchForm = ({ onSearch, onLocate}) => {
           <option value="nextweek">Příští týden</option>
           <option value="all">Vše</option>
         </FormControl>
-        <Button type="button" bsStyle="primary" onClick={onSearch}>Search</Button>
+        <Button type="button" bsStyle="primary" onClick={onSearch}>
+          <Icon name="search" /> Search
+        </Button>
         <GeoLocateButton onLocate={onLocate}/>
       </FormGroup>
     </div>

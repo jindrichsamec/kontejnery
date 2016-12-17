@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { Button } from 'react-bootstrap'
+import Icon from './Icon'
 
 export default class GeoLocationButton extends Component {
 
@@ -38,6 +39,8 @@ export default class GeoLocationButton extends Component {
       return null;
     }
 
-    return <Button type="button" bsStyle="success" onClick={this._handleClick}>Locate</Button>
+    return <Button type="button" bsStyle="success" onClick={this._handleClick}>
+      <Icon name="location-arrow" /> Moje poloha
+    </Button>
   }
 }

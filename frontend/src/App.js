@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import GoogleMap from 'google-map-react';
+import React, { Component } from 'react'
+import GoogleMap from 'google-map-react'
 import { observable } from 'mobx';
 import { observer } from 'mobx-react'
-import './App.css';
-import 'bootstrap/dist/css/bootstrap.css';
-import 'bootstrap/dist/css/bootstrap-theme.css';
+import './App.css'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap-theme.css'
+import 'font-awesome/css/font-awesome.min.css'
 import Container from './Container'
-import SearchForm from './SearchForm';
-import Center from './Center';
+import SearchForm from './SearchForm'
+import Center from './Center'
 
 export default observer(class App extends Component {
 
