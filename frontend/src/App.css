@@ -18,7 +18,15 @@
   font-size: large;
 }
 
-@keyframes App-logo-spin {
+.icon {
+  font-size: 3em;
+}
+
+.fa-circle-o-notch {
+  animation: spinner infinite 1s linear;
+}
+
+@keyframes spinner {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }

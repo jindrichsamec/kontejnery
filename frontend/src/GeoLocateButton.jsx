@@ -1,17 +1,24 @@
 import React, { Component, PropTypes } from 'react'
+import { observer } from 'mobx-react'
+import { observable } from 'mobx'
 import { Button } from 'react-bootstrap'
 import Icon from './Icon'
 
-export default class GeoLocationButton extends Component {
+export default observer(class GeoLocationButton extends Component {
 
   static propTypes = {
     onLocate: PropTypes.func.isRequired,
     onLocateFail: PropTypes.func
   }
 
+  obsState = observable({
+    disabled: false
+  })
+
   _handleSuccess = (position) => {
-    const { latitude, longitude } = position.coords;
-    this.props.onLocate(latitude, longitude);
+    const { latitude, longitude } = position.coords
+    this.props.onLocate(latitude, longitude)
+    this.obsState.disabled = false
   }
 
   _handleFail = (error) => {
@@ -20,9 +27,11 @@ export default class GeoLocationButton extends Component {
     } else {
       console.error(error);
     }
+    this.obsState.disabled = false
   }
 
   _handleClick = () => {
+    this.obsState.disabled = true
     navigator.geolocation.getCurrentPosition(this._handleSuccess, this._handleFail)
   }
 
@@ -39,8 +48,8 @@ export default class GeoLocationButton extends Component {
       return null;
     }
 
-    return <Button type="button" bsStyle="success" onClick={this._handleClick}>
-      <Icon name="location-arrow" /> Moje poloha
+    return <Button type="button" bsStyle="success" onClick={this._handleClick} disabled={this.obsState.disabled}>
+      {this.obsState.disabled ? <Icon name="circle-o-notch" /> : <Icon name="location-arrow" />} Moje poloha
     </Button>
   }
-}
+})
