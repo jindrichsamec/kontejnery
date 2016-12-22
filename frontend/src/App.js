@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.css'
 import 'bootstrap/dist/css/bootstrap-theme.css'
 import 'font-awesome/css/font-awesome.min.css'
 import Container from './Container'
-import SearchForm from './SearchForm'
+import Controller from './Controller'
 import Center from './Center'
 
 export default observer(class App extends Component {
@@ -39,7 +39,7 @@ export default observer(class App extends Component {
 
     return (
       <div>
-        <SearchForm onSearch={this._handleSearch} onLocate={this._handleLocate} />
+        <Controller onSearch={this._handleSearch} onLocate={this._handleLocate} />
         <div className="map">
           <GoogleMap
             bootstrapURLKeys={bootstrapURLKeys}
