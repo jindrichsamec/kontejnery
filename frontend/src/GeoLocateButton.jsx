@@ -49,7 +49,7 @@ export default observer(class GeoLocationButton extends Component {
     }
 
     return <Button type="button" bsStyle="success" onClick={this._handleClick} disabled={this.obsState.disabled}>
-      {this.obsState.disabled ? <Icon name="circle-o-notch" /> : <Icon name="location-arrow" />} Moje poloha
+      <Icon name={this.obsState.disabled ? 'circle-o-notch' : 'location-arrow'} /> Moje poloha
     </Button>
   }
 })
