@@ -9,8 +9,8 @@ from .views import *
 def register_container(app):
 
     api = Api(app, prefix='/api')
-    api.add_resource(ContainerDetail, '/<int:container_id>', endpoint='container')
-    api.add_resource(ContainerList, '/list', endpoint='container_list')
+    api.add_resource(ContainerDetail, '/<int:container_id>')
+    api.add_resource(ContainerList, '/list')
 
     #user_blueprint = Blueprint('web_user', __name__, template_folder='templates', url_prefix='/web/user')
     #user_blueprint.add_url_rule('/list', view_func=user_listing, endpoint='web_user_listing')

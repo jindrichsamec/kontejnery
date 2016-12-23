@@ -1,3 +1,5 @@
+import json
+import geoalchemy2.functions as func
 from database import db
 from geoalchemy2.types import Geography
 
@@ -14,6 +16,12 @@ class Container(db.Model):
     name = db.Column(db.String(255), nullable=False)
     slug = db.Column(db.String(255), nullable=False)
     coordinates = db.Column(Geography('POINT', srid=4326))
+
+    def get_coordinates(self):
+        if self.coordinates is None:
+            return self.coordinates
+        geom_json = json.loads(db.session.scalar(func.ST_AsGeoJSON(self.coordinates)))
+        return geom_json['coordinates']
 
     def __repr__(self):
         return '<Container #{}: {}>'.format(self.id, self.slug)
