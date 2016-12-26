@@ -24,7 +24,7 @@ export default observer(class SearchForm extends Component {
   }
 
   _getListUrl = (from, to) => {
-    return 'http://localhost:5000/api/list?from=%FROM%&to=%TO%'
+    return 'http://localhost:3000/api/list?date_from=%FROM%&date_to=%TO%'
       .replace('%FROM%', this._dateToString(from))
       .replace('%TO%', this._dateToString(to));
   }
@@ -38,7 +38,7 @@ export default observer(class SearchForm extends Component {
 
   _handleSuccess = (response) => {
     this.obsState.searching = false
-    this.props.onSearch(response.json());
+    response.json().then(json => this.props.onSearch(json.data));
   }
 
   _handleFail = (response) => {

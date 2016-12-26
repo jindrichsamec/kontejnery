@@ -21,7 +21,7 @@ class Container(db.Model):
         if self.coordinates is None:
             return self.coordinates
         geom_json = json.loads(db.session.scalar(func.ST_AsGeoJSON(self.coordinates)))
-        return geom_json['coordinates']
+        return {"lng": geom_json['coordinates'][0], "lat": geom_json['coordinates'][1]}
 
     def __repr__(self):
         return '<Container #{}: {}>'.format(self.id, self.slug)

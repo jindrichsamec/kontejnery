@@ -19,11 +19,12 @@ export default observer(class App extends Component {
   }
 
   obState = observable({
-    center: null
+    center: null,
+    containers: []
   })
 
-  _handleSearch = (when) => {
-    console.info('Search', when);
+  _handleSearch = (data) => {
+    this.obState.containers = data
   }
 
   _handleLocate = (lat, lng) => {
@@ -47,7 +48,7 @@ export default observer(class App extends Component {
             defaultZoom={defaultZoom}
             center={center}>
             {center ? <Center {...center} /> : null}
-            <Container />
+            {this.obState.containers.map((container) => <Container {...container} {...container.coordinates} key={container.id} />)}
           </GoogleMap>
         </div>
       </div>
