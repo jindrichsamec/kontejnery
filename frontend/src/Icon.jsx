@@ -1,9 +1,12 @@
 import React, { PropTypes } from 'react'
 
-const Icon = ({ name }) => {
+const Icon = ({ name, size }) => {
   const className = `fa fa-${name}`
+  const style = {
+    fontSize: size
+  }
   return(
-    <span className={className}></span>
+    <span className={className} style={style}></span>
   )
 }
 

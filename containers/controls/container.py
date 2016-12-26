@@ -6,7 +6,7 @@ def get_container(container_id):
 
     if container is None:
         raise ContainerNotFound()
-    return {'id': container.id, 'name': container.name, 'coordinates': container.get_coordinates()}
+    return {'id': container.id, 'name': container.name, 'coordinates': container.get_coordinates(), 'terms': container.get_terms()}
 
 def list_containers(date_from, date_to):
     containers = Container.query.join(Term).\

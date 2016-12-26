@@ -46,6 +46,7 @@ export default observer(class App extends Component {
             bootstrapURLKeys={bootstrapURLKeys}
             defaultCenter={defaultCenter}
             defaultZoom={defaultZoom}
+            hoverDistance={24}
             center={center}>
             {center ? <Center {...center} /> : null}
             {this.obState.containers.map((container) => <Container {...container} {...container.coordinates} key={container.id} />)}

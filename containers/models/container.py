@@ -23,5 +23,9 @@ class Container(db.Model):
         geom_json = json.loads(db.session.scalar(func.ST_AsGeoJSON(self.coordinates)))
         return {"lng": geom_json['coordinates'][0], "lat": geom_json['coordinates'][1]}
 
+
+    def get_terms(self):
+        return [{'id': term.id, 'datetime_from': term.datetime_from, 'datetime_to': term.datetime_to} for term in self.terms]
+
     def __repr__(self):
         return '<Container #{}: {}>'.format(self.id, self.slug)

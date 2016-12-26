@@ -3,6 +3,7 @@ from database import register_db
 from bootstrap import register_bootstrap
 from containers import register_container
 from containers.admin import register_admin
+from json_encoder import register_encoder
 import os
 
 
@@ -15,6 +16,8 @@ def create_app():
   app.config['MAPBOX_MAP_ID'] = 'mapbox.streets'
   app.config['MAPBOX_SEARCH'] = True
   app.config['MAPBOX_ACCESS_TOKEN'] = 'pk.eyJ1IjoiamluZHJpY2hzYW1lYyIsImEiOiJjaXdkdnJ0cmQwMDd2MnlueHN6ZGlrY2M4In0.9LfZvNCXUBeczArL77FgOg'
+  register_encoder(app)
+
   register_db(app)
   register_bootstrap(app)
 
