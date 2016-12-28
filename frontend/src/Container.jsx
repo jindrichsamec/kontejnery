@@ -7,6 +7,11 @@ import ContainerDetail from './ContainerDetail'
 
 export default observer(class Container extends Component {
 
+  static propTypes = {
+    id: PropTypes.number.isRequired,
+    name: PropTypes.string.isRequired
+  }
+
   obState = observable({
     showDetail: false,
     target: null

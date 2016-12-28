@@ -8,7 +8,7 @@
 
 .container {
   position:absolute;
-  font-size: 24pt
+  font-size: 24pt;
 }
 
 @keyframes spinner {

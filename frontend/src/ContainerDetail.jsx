@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
-import { Popover } from 'react-bootstrap'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import Icon from './Icon'
+import { formatInterval } from './utils/DateInterval'
 
 export default observer(class ContainerDetail extends Component {
 
@@ -15,14 +15,31 @@ export default observer(class ContainerDetail extends Component {
   })
 
   componentDidMount() {
-    fetch(`http://localhost:3000/api/${this.props.id}`).then(this._handleSuccess, this._handleFail)
+    fetch(`http://localhost:3000/api/${this.props.id}`).then(this.handleSuccess, this.handleFail)
   }
 
-  _handleSuccess = (response) => {
-    response.json().then(json => this.setDetailInfo(json.data))
+  normalizeData = (data) => {
+    const terms = data.terms.map((item) => {
+      return {
+        ...item,
+        datetime_from: new Date(item.datetime_from),
+        datetime_to: new Date(item.datetime_to)
+      }
+    })
+    return {
+      ...data,
+      terms
+    }
   }
 
-  _handleFail = () => {
+  handleSuccess = (response) => {
+    response.json().then(json => {
+      const data = this.normalizeData(json.data)
+      this.setDetailInfo(data)
+    })
+  }
+
+  handleFail = () => {
     console.error('Error during the request');
   }
 
@@ -31,7 +48,7 @@ export default observer(class ContainerDetail extends Component {
   }
 
   renderDetailInfo(info) {
-    return <ul>{info.terms.map(term => <li key={term.id}>{term.datetime_from} - {term.datetime_to}</li>)}</ul>
+    return <ul>{info.terms.map(term => <li key={term.id}>{formatInterval(term.datetime_from, term.datetime_to)}</li>)}</ul>
   }
 
   render() {
