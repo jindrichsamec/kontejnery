@@ -15,7 +15,7 @@ export default observer(class ContainerDetail extends Component {
   })
 
   componentDidMount() {
-    fetch(`http://localhost:3000/api/${this.props.id}`).then(this.handleSuccess, this.handleFail)
+    fetch(`${process.env.REACT_APP_API_HOST}/api/${this.props.id}`).then(this.handleSuccess, this.handleFail)
   }
 
   normalizeData = (data) => {

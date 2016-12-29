@@ -24,7 +24,7 @@ export default observer(class SearchForm extends Component {
   }
 
   _getListUrl = (from, to) => {
-    return 'http://localhost:3000/api/list?date_from=%FROM%&date_to=%TO%'
+    return `${process.env.REACT_APP_API_HOST}/api/list?date_from=%FROM%&date_to=%TO%`
       .replace('%FROM%', this._dateToString(from))
       .replace('%TO%', this._dateToString(to));
   }
