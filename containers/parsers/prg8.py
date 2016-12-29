@@ -42,5 +42,8 @@ def parse_datetime_interval(date_as_string, timeinterval_as_string):
 
 def parse_datetime(datetime_as_string):
     result = datetime.strptime(datetime_as_string, '%d. %m. %H.%M')
-    result = result.replace(year=datetime.today().year)
-    return result
+    year = datetime.today().year
+    currentMonth = datetime.today().month
+    if result.month < currentMonth and currentMonth > 10:
+        year = year + 1
+    return result.replace(year=year)
