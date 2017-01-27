@@ -23,6 +23,7 @@ setup(
         "flask-migrate",
         "flask-bootstrap",
         "flask-restful",
+        'flask-cors',
         "passlib",
         "bs4",
         'python-slugify',
