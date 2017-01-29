@@ -12,9 +12,22 @@ export default observer(class SearchForm extends Component {
     onSearch: PropTypes.func.isRequired
   }
 
-  obsState = observable({
-    searching: false
-  })
+  intervalLabels = {
+    [interval.TODAY]: 'Dnes',
+    [interval.TOMORROW]: 'Zítra',
+    [interval.THIS_WEEK]: 'Tento týden',
+    [interval.NEXT_WEEK]: 'Příští týden',
+    [interval.THIS_MONTH]: 'Tento měsíc',
+  }
+
+  obState = observable({
+    searching: false,
+    dateInterval: interval.THIS_WEEK
+  });
+
+  componentDidMount = () => {
+    this._doSearch(this.obState.dateInterval)
+  }
 
   _dateToString = (date) => {
     if (date === null) {
@@ -30,35 +43,44 @@ export default observer(class SearchForm extends Component {
   }
 
   _handleFormChange = (e) => {
-    this.obsState.searching = true
-    const { from, to } = convertIntervalToDates(this.dateInterval.value)
+    this.obState.searching = true
+    this._doSearch(this.selection.value)
+  }
+
+  _doSearch(interval) {
+    const { from, to } = convertIntervalToDates(interval)
     const url = this._getListUrl(from, to)
     fetch(url).then(this._handleSuccess, this._handleFail)
   }
 
   _handleSuccess = (response) => {
-    this.obsState.searching = false
+    this.obState.searching = false
     response.json().then(json => this.props.onSearch(json.data));
   }
 
   _handleFail = (response) => {
-    this.obsState.searching = false
+    this.obState.searching = false
     console.error('Error during request');
+  }
+
+  _getLabel(interval) {
+    return this.intervalLabels[interval];
   }
 
   render() {
     return(
       <FormGroup>
-        <FormControl componentClass="select" placeholder="Select one..." inputRef={ref => this.dateInterval = ref} onChange={this._handleFormChange.bind(this)}>
-          <option value={interval.TODAY}>Dnes</option>
-          <option value={interval.TOMORROW}>Zítra</option>
-          <option value={interval.THIS_WEEK}>Tento týden</option>
-          <option value={interval.NEXT_WEEK}>Příští týden</option>
-          <option value={interval.THIS_MONTH}>Tento měsíc</option>
-          <option value={interval.ALL}>Vše</option>
+        <FormControl
+          componentClass="select"
+          placeholder="Select one..."
+          ref='intervalSelect'
+          inputRef={ref => this.selection = ref}
+          onChange={this._handleFormChange}
+          defaultValue={this.obState.dateInterval}>
+          {Object.keys(this.intervalLabels).map((i) => <option key={i} value={i}>{this._getLabel(i)}</option>)}
         </FormControl>
-        <Button type="button" bsStyle="primary" onClick={this._handleFormChange.bind(this)} disabled={this.obsState.searching}>
-          <Icon name={this.obsState.searching ? 'circle-o-notch' : 'search'} />
+        <Button type="button" bsStyle="primary" onClick={this._handleFormChange} disabled={this.obState.searching}>
+          <Icon name={this.obState.searching ? 'circle-o-notch' : 'search'} />
         </Button>
       </FormGroup>
     )
