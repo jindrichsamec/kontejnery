@@ -2,7 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import 'whatwg-fetch'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
-import { FormGroup, FormControl, Button } from 'react-bootstrap'
+import { FormGroup, FormControl, Button, InputGroup } from 'react-bootstrap'
 import Icon from './Icon'
 import { interval, convertIntervalToDates } from './utils/DateInterval'
 
@@ -70,18 +70,22 @@ export default observer(class SearchForm extends Component {
   render() {
     return(
       <FormGroup>
-        <FormControl
-          componentClass="select"
-          placeholder="Select one..."
-          ref='intervalSelect'
-          inputRef={ref => this.selection = ref}
-          onChange={this._handleFormChange}
-          defaultValue={this.obState.dateInterval}>
-          {Object.keys(this.intervalLabels).map((i) => <option key={i} value={i}>{this._getLabel(i)}</option>)}
-        </FormControl>
-        <Button type="button" bsStyle="primary" onClick={this._handleFormChange} disabled={this.obState.searching}>
-          <Icon name={this.obState.searching ? 'circle-o-notch' : 'search'} />
-        </Button>
+        <InputGroup>
+          <FormControl
+            componentClass="select"
+            placeholder="Select one..."
+            ref='intervalSelect'
+            inputRef={ref => this.selection = ref}
+            onChange={this._handleFormChange}
+            defaultValue={this.obState.dateInterval}>
+            {Object.keys(this.intervalLabels).map((i) => <option key={i} value={i}>{this._getLabel(i)}</option>)}
+          </FormControl>
+          <InputGroup.Button>
+            <Button type="button" bsStyle="primary" onClick={this._handleFormChange} disabled={this.obState.searching}>
+              <Icon name={this.obState.searching ? 'circle-o-notch' : 'search'} />
+            </Button>
+          </InputGroup.Button>
+        </InputGroup>
       </FormGroup>
     )
   }
