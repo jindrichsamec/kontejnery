@@ -1,13 +1,19 @@
+html, body, #container, #root {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
 body {
-  margin: 0;
-  padding: 0;
+  padding-top: 50px;
 }
-.map {
-  height: 100vh;
-  width: 100vw;
+#map, #root {
+  width: auto;
+  height: 100%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
-.controller {
-  position: absolute;
-  z-index: 999;
-  width: 18rem;
+
+@media (max-width: 992px) {
+  .navbar .navbar-brand {
+    font-size: 18px;
+  }
 }
