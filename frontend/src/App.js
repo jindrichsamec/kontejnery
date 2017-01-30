@@ -16,7 +16,7 @@ export default observer(class App extends Component {
 
   static defaultProps = {
     defaultCenter: {lat: 50.1197589, lng: 14.4673313},
-    defaultZoom: 14,
+    defaultZoom: 13,
     apiKey: process.env.GOOGLE_MAPS_API_KEY || 'AIzaSyC8NUe06Wy66Vf-4-tTIzobuGm4GXIdBDI',
   }
 
