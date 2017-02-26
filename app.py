@@ -17,6 +17,8 @@ def create_app():
   app.config['MAPBOX_MAP_ID'] = 'mapbox.streets'
   app.config['MAPBOX_SEARCH'] = True
   app.config['MAPBOX_ACCESS_TOKEN'] = os.environ.get('MAPBOX_ACCESS_TOKEN')
+  app.config['LETS_ENCRYPT_SECRET'] = os.environ.get('LETS_ENCRYPT_SECRET')
+
   cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
   register_encoder(app)
 

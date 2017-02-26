@@ -17,6 +17,10 @@ def register_container(app):
     #user_blueprint.add_url_rule('/<int:user_id>', view_func=user_detail, endpoint='web_user_detail')
     #app.register_blueprint(user_blueprint)
 
+    @app.route('/.well-known/acme-challenge/<string:lets_encrypt_key>')
+    def letsencrypt(lets_encrypt_key):
+        return '{}.{}'.format(lets_encrypt_key, app.config['LETS_ENCRYPT_SECRET'])
+
     @app.route('/')
     def index():
         pages = [
