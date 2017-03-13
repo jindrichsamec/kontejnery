@@ -8,6 +8,9 @@ Run Python API server
 - install python dependencies `pip install -e .`
 - run `FLASK_APP=runner python -m runner.py`
 
+Run Crawler
+- `FLASK_APP=runner flask crawler`
+
 Run Python tests
 - `python setup.py test`
 
