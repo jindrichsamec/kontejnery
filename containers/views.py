@@ -8,14 +8,14 @@ from .exceptions import ContainerNotFound, UnspecifiedError, InvalidArguments
 
 __all__ = ('ContainerDetail', 'ContainerList')
 
-def convert_to_start_date(date_string):
-    return convert_to_date(date_string, '23:59:59')
+def convert_to_start_date(datetime_string):
+    return convert_to_date(datetime_string)
 
-def convert_to_end_date(date_string):
-    return convert_to_date(date_string, '00:00:00')
+def convert_to_end_date(datetime_string):
+    return convert_to_date(datetime_string)
 
-def convert_to_date(date_string, time_string):
-    return datetime.strptime('{} {}'.format(date_string, time_string), '%Y-%m-%d %H:%M:%S')
+def convert_to_date(datetime_string):
+    return datetime.strptime(datetime_string, '%Y-%m-%dT%H:%M:%S.%fZ')
 
 
 class ContainerDetail(Resource):
