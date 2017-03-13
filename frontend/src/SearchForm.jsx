@@ -33,7 +33,7 @@ export default observer(class SearchForm extends Component {
     if (date === null) {
       return ''
     }
-    return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`
+    return date.toISOString();
   }
 
   _getListUrl = (from, to) => {
