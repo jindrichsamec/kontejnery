@@ -8,13 +8,7 @@ from .exceptions import ContainerNotFound, UnspecifiedError, InvalidArguments
 
 __all__ = ('ContainerDetail', 'ContainerList')
 
-def convert_to_start_date(datetime_string):
-    return convert_to_date(datetime_string)
-
-def convert_to_end_date(datetime_string):
-    return convert_to_date(datetime_string)
-
-def convert_to_date(datetime_string):
+def convert_to_datetime(datetime_string):
     return datetime.strptime(datetime_string, '%Y-%m-%dT%H:%M:%S.%fZ')
 
 
@@ -33,10 +27,10 @@ class ContainerList(Resource):
     def get(self):
 
         parser = reqparse.RequestParser()
-        parser.add_argument('date_from', type=convert_to_start_date, required=True)
-        parser.add_argument('date_to', type=convert_to_end_date, required=True)
+        parser.add_argument('since', type=convert_to_datetime, required=True)
+        parser.add_argument('till', type=convert_to_datetime, required=True)
 
         args = parser.parse_args()
 
-        data = list_containers(args['date_from'], args['date_to'])
+        data = list_containers(args['since'], args['till'])
         return {'status_code': 200, 'data': data}

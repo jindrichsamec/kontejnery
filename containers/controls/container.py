@@ -8,10 +8,10 @@ def get_container(container_id):
         raise ContainerNotFound()
     return {'id': container.id, 'name': container.name, 'coordinates': container.get_coordinates(), 'terms': container.get_terms()}
 
-def list_containers(date_from, date_to):
+def list_containers(since, till):
     containers = Container.query.join(Term).\
         filter(Container.coordinates != None).\
-        filter(Term.datetime_from >= date_from).\
-        filter(Term.datetime_to <= date_to)
+        filter(Term.datetime_from >= since).\
+        filter(Term.datetime_to <= till)
 
     return [{'id': c.id, 'name': c.name, 'coordinates': c.get_coordinates()} for c in containers]
