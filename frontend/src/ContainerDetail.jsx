@@ -3,6 +3,7 @@ import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import Icon from './Icon'
 import { formatInterval } from './utils/DateInterval'
+import SearchQuery from './model/SearchQuery';
 
 export default observer(class ContainerDetail extends Component {
 
@@ -15,15 +16,16 @@ export default observer(class ContainerDetail extends Component {
   })
 
   componentDidMount() {
-    fetch(`${process.env.REACT_APP_API_HOST}/api/${this.props.id}`).then(this.handleSuccess, this.handleFail)
+    const since = SearchQuery.since.toISOString();
+    fetch(`${process.env.REACT_APP_API_HOST}/api/${this.props.id}?since=${since}`).then(this.handleSuccess, this.handleFail)
   }
 
   normalizeData = (data) => {
     const terms = data.terms.map((item) => {
       return {
         ...item,
-        datetime_from: new Date(item.datetime_from),
-        datetime_to: new Date(item.datetime_to)
+        since: new Date(item.since),
+        till: new Date(item.till)
       }
     })
     return {
@@ -48,7 +50,7 @@ export default observer(class ContainerDetail extends Component {
   }
 
   renderDetailInfo(info) {
-    return <ul>{info.terms.map(term => <li key={term.id}>{formatInterval(term.datetime_from, term.datetime_to)}</li>)}</ul>
+    return <ul>{info.terms.map(term => <li key={term.id}>{formatInterval(term.since, term.till)}</li>)}</ul>
   }
 
   render() {

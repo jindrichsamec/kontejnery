@@ -2,6 +2,7 @@ import json
 import geoalchemy2.functions as func
 from database import db
 from geoalchemy2.types import Geography
+from .term import Term
 
 class Container(db.Model):
     """
@@ -11,7 +12,7 @@ class Container(db.Model):
     """
     __tablename__ = 'containers'
     id = db.Column(db.Integer, primary_key=True)
-    terms = db.relationship('Term')
+    terms = db.relationship('Term',lazy='dynamic')
 
     name = db.Column(db.String(255), nullable=False)
     slug = db.Column(db.String(255), nullable=False)
@@ -24,8 +25,10 @@ class Container(db.Model):
         return {"lng": geom_json['coordinates'][0], "lat": geom_json['coordinates'][1]}
 
 
-    def get_terms(self):
-        return [{'id': term.id, 'datetime_from': term.datetime_from, 'datetime_to': term.datetime_to} for term in self.terms]
+    def get_terms(self, since):
+        terms = self.terms.filter(Term.datetime_from >= since)
+
+        return [{'id': term.id, 'since': term.datetime_from, 'till': term.datetime_to} for term in terms]
 
     def __repr__(self):
         return '<Container #{}: {}>'.format(self.id, self.slug)

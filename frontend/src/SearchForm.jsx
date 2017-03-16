@@ -5,6 +5,7 @@ import { observer } from 'mobx-react'
 import { FormGroup, FormControl, Button, InputGroup } from 'react-bootstrap'
 import Icon from './Icon'
 import { interval, convertIntervalToDates } from './utils/DateInterval'
+import SearchQuery from './model/SearchQuery'
 
 export default observer(class SearchForm extends Component {
 
@@ -36,10 +37,10 @@ export default observer(class SearchForm extends Component {
     return date.toISOString();
   }
 
-  _getListUrl = (from, to) => {
-    return `${process.env.REACT_APP_API_HOST}/api/list?since=%FROM%&till=%TO%`
-      .replace('%FROM%', this._dateToString(from))
-      .replace('%TO%', this._dateToString(to));
+  _getListUrl = (since, till) => {
+    return `${process.env.REACT_APP_API_HOST}/api/list?since=%SINCE%&till=%TILL%`
+      .replace('%SINCE%', this._dateToString(since))
+      .replace('%TILL%', this._dateToString(till));
   }
 
   _handleFormChange = (e) => {
@@ -48,8 +49,10 @@ export default observer(class SearchForm extends Component {
   }
 
   _doSearch(interval) {
-    const { from, to } = convertIntervalToDates(interval)
-    const url = this._getListUrl(from, to)
+    const {since, till} = convertIntervalToDates(interval)
+    SearchQuery.since = since;
+    SearchQuery.till = till;
+    const url = this._getListUrl(since, till)
     fetch(url).then(this._handleSuccess, this._handleFail)
   }
 

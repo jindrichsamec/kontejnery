@@ -13,19 +13,19 @@ export const interval = keymirror({
 const getThisWeekDatesInterval = () => {
   const monday = getModayDate(getToday())
   const mondayAfterWeek = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + 7)
-  return {from: monday, to: mondayAfterWeek}
+  return {since: monday, till: mondayAfterWeek}
 }
 
 const getNextWeekDatesInterval = () => {
   const monday = getModayDate(getToday())
   const mondayAfterWeek = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + 7)
   const mondayAfterTwoWeeks = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + 14)
-  return {from: mondayAfterWeek, to: mondayAfterTwoWeeks}
+  return {since: mondayAfterWeek, till: mondayAfterTwoWeeks}
 }
 
 const getThisMonthDatesInterval = () => {
   const today = getToday()
-  return {from: new Date(today.getFullYear(), today.getMonth(), 1), to: new Date(today.getFullYear(), today.getMonth() + 1, 0)}
+  return {since: new Date(today.getFullYear(), today.getMonth(), 1), till: new Date(today.getFullYear(), today.getMonth() + 1, 0)}
 }
 
 const pad = (s) => {
@@ -37,10 +37,10 @@ const pad = (s) => {
 export const convertIntervalToDates = (intervalName) => {
 
   if (intervalName === interval.TODAY) {
-    return {from: getToday(), to: getTomorrowDate()}
+    return {since: getToday(), till: getTomorrowDate()}
   } else if (intervalName === interval.TOMORROW) {
     const tomorrow = getTomorrowDate()
-    return {from: tomorrow, to: getTomorrowDate(tomorrow)}
+    return {since: tomorrow, till: getTomorrowDate(tomorrow)}
   } else if (intervalName === interval.THIS_WEEK) {
     return getThisWeekDatesInterval()
   } else if (intervalName === interval.NEXT_WEEK) {
@@ -48,7 +48,7 @@ export const convertIntervalToDates = (intervalName) => {
   } else if (intervalName === interval.THIS_MONTH) {
     return getThisMonthDatesInterval()
   } else {
-    return {from: null, to: null}
+    return {since: null, till: null}
   }
 
 }
