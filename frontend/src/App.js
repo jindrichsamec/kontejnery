@@ -9,7 +9,8 @@ import 'font-awesome/css/font-awesome.min.css'
 import Container from './Container'
 import Controller from './Controller'
 import Center from './Center'
-
+import ContainerDetail from './ContainerDetail'
+import { Modal } from 'react-bootstrap';
 
 export default observer(class App extends Component {
 
@@ -19,29 +20,50 @@ export default observer(class App extends Component {
     apiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
   }
 
-  obState = observable({
+  model = observable({
+    containers: [],
     center: null,
-    containers: []
-  })
+    selectedContainer: null
+  });
 
-  _handleSearch = (data) => {
-    this.obState.containers = data
+  handleSearch = (data) => {
+    this.model.containers = data
   }
 
-  _handleLocate = (lat, lng) => {
-    this.obState.center = {lat, lng}
+  handleLocate = (lat, lng) => {
+    this.model.center = {lat, lng}
+  }
+
+  handleContainerClick = (id, name) => {
+    this.model.selectedContainer = {id, name}
+  }
+
+  handleCloseDetail = () => {
+    this.model.selectedContainer = null;
+  }
+
+  renderDetail(id, name) {
+    return (<Modal show={true} onHide={this.handleCloseDetail}>
+        <Modal.Header closeButton>
+          <Modal.Title>{name}</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <ContainerDetail id={id} name={name} />
+        </Modal.Body>
+    </Modal>);
   }
 
   render() {
     const { defaultCenter, defaultZoom, apiKey } = this.props;
+    const { center, containers, selectedContainer } = this.model;
     const bootstrapURLKeys = {
       key: apiKey,
     };
-    const { center } = this.obState;
 
     return (
       <span>
-        <Controller onSearch={this._handleSearch} onLocate={this._handleLocate} />
+        <Controller onSearch={this.handleSearch} onLocate={this.handleLocate} />
         <div id="container">
           <div id="map">
             <GoogleMap
@@ -50,8 +72,16 @@ export default observer(class App extends Component {
               defaultZoom={defaultZoom}
               hoverDistance={24}
               center={center}>
-              {center ? <Center {...center} /> : null}
-              {this.obState.containers.map((container) => <Container {...container} {...container.coordinates} key={container.id} />)}
+
+              {center ? <Center {...this.center} /> : null}
+              {containers.map((container) => {
+                return (<Container
+                  {...container}
+                  {...container.coordinates}
+                  key={container.id}
+                  onClick={this.handleContainerClick} />)
+              })}
+              {selectedContainer ? this.renderDetail(selectedContainer.id, selectedContainer.name) : null}
             </GoogleMap>
           </div>
         </div>
