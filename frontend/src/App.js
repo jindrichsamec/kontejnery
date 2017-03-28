@@ -3,14 +3,13 @@ import GoogleMap from 'google-map-react'
 import { observable } from 'mobx';
 import { observer } from 'mobx-react'
 import './App.css'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap/dist/css/bootstrap-theme.css'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import Container from './Container'
 import Controller from './Controller'
 import Center from './Center'
 import ContainerDetail from './ContainerDetail'
-import { Modal } from 'react-bootstrap';
+import { Modal, Button } from 'react-bootstrap';
 
 export default observer(class App extends Component {
 
@@ -51,6 +50,9 @@ export default observer(class App extends Component {
         <Modal.Body>
           <ContainerDetail id={id} name={name} />
         </Modal.Body>
+        <Modal.Footer>
+          <Button className="btn btn-default" onClick={this.handleCloseDetail}>Zavřít</Button>
+        </Modal.Footer>
     </Modal>);
   }
 
@@ -73,7 +75,7 @@ export default observer(class App extends Component {
               hoverDistance={24}
               center={center}>
 
-              {center ? <Center {...this.center} /> : null}
+              {center && <Center {...this.center} />}
               {containers.map((container) => {
                 return (<Container
                   {...container}
@@ -81,7 +83,7 @@ export default observer(class App extends Component {
                   key={container.id}
                   onClick={this.handleContainerClick} />)
               })}
-              {selectedContainer ? this.renderDetail(selectedContainer.id, selectedContainer.name) : null}
+              {selectedContainer && this.renderDetail(selectedContainer.id, selectedContainer.name)}
             </GoogleMap>
           </div>
         </div>
