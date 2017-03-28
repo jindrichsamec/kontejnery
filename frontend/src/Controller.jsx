@@ -2,16 +2,17 @@ import React, { PropTypes } from 'react'
 import { Navbar } from 'react-bootstrap'
 import SearchForm from './SearchForm'
 import GeoLocateButton from './GeoLocateButton'
+import Icon from './Icon'
 
 const Controller = ({ onSearch, onLocate }) => {
 
   return(
-    <Navbar inverse collapseOnSelect fixedTop fluid>
+    <Navbar collapseOnSelect fixedTop fluid>
       <Navbar.Header>
-        <Navbar.Toggle />
         <Navbar.Brand>
-          Velkoobjemáky
+          <Icon name="table" /> Velkoobjemáky
         </Navbar.Brand>
+        <Navbar.Toggle />
       </Navbar.Header>
       <Navbar.Collapse>
         <Navbar.Form pullLeft>
