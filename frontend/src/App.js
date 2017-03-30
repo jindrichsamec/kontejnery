@@ -75,7 +75,7 @@ export default observer(class App extends Component {
               hoverDistance={24}
               center={center}>
 
-              {center && <Center {...this.center} />}
+              {center && <Center {...center} />}
               {containers.map((container) => {
                 return (<Container
                   {...container}
