@@ -9,7 +9,6 @@ import Container from './Container'
 import Controller from './Controller'
 import Center from './Center'
 import ContainerDetail from './ContainerDetail'
-import { Modal, Button } from 'react-bootstrap';
 
 export default observer(class App extends Component {
 
@@ -41,21 +40,6 @@ export default observer(class App extends Component {
     this.model.selectedContainer = null;
   }
 
-  renderDetail(id, name) {
-    return (<Modal show={true} onHide={this.handleCloseDetail}>
-        <Modal.Header closeButton>
-          <Modal.Title>{name}</Modal.Title>
-        </Modal.Header>
-
-        <Modal.Body>
-          <ContainerDetail id={id} name={name} />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button className="btn btn-default" onClick={this.handleCloseDetail}>Zavřít</Button>
-        </Modal.Footer>
-    </Modal>);
-  }
-
   render() {
     const { defaultCenter, defaultZoom, apiKey } = this.props;
     const { center, containers, selectedContainer } = this.model;
@@ -83,7 +67,7 @@ export default observer(class App extends Component {
                   key={container.id}
                   onClick={this.handleContainerClick} />)
               })}
-              {selectedContainer && this.renderDetail(selectedContainer.id, selectedContainer.name)}
+              {selectedContainer && <ContainerDetail {...selectedContainer} onClose={this.handleCloseDetail} />}
             </GoogleMap>
           </div>
         </div>

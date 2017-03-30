@@ -53,8 +53,16 @@ export const convertIntervalToDates = (intervalName) => {
 
 }
 
-export const formatInterval = (dateTimeFrom, dateTimeTo) => {
-  return `${dateTimeFrom.getDate()}. ${dateTimeFrom.getMonth() + 1}.
-    ${dateTimeFrom.getHours()}:${pad(dateTimeFrom.getMinutes())} -
+export const formatDayName = (day) => {
+  const dayNames = ['Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota', 'Neděle']
+  return dayNames[day - 1] || '';
+}
+
+export const formatDate = (date) => {
+  return `${date.getDate()}. ${date.getMonth() + 1}. ${date.getFullYear()}`
+}
+
+export const formatTimeInterval = (dateTimeFrom, dateTimeTo) => {
+  return `${dateTimeFrom.getHours()}:${pad(dateTimeFrom.getMinutes())} -
     ${dateTimeTo.getHours()}:${pad(dateTimeTo.getMinutes())}`
 }
