@@ -11,7 +11,7 @@ const Controller = ({ onSearch, onLocate }) => {
       <Navbar.Header>
         <Navbar.Toggle />
         <Navbar.Brand>
-          <Icon name="table" /> <span className="hidden-xs">Velkoobjemáky</span>
+          <Icon name="table" /> <span className="hidden-xs" style={{fontFamily: 'Impact', fontWeight: 'normal'}}>Velkoobjemáky</span>
         </Navbar.Brand>
 
         <Navbar.Form pullLeft className="search-form">

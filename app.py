@@ -5,6 +5,7 @@ from bootstrap import register_bootstrap
 from containers import register_container
 from containers.admin import register_admin
 from json_encoder import register_encoder
+from logger import register_logger
 import os
 
 
@@ -20,6 +21,7 @@ def create_app():
   app.config['LETS_ENCRYPT_SECRET'] = os.environ.get('LETS_ENCRYPT_SECRET')
 
   cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
+  register_logger(app)
   register_encoder(app)
 
   register_db(app)
