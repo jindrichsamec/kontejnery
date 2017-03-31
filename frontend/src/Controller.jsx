@@ -9,15 +9,17 @@ const Controller = ({ onSearch, onLocate }) => {
   return(
     <Navbar collapseOnSelect fixedTop fluid>
       <Navbar.Header>
-        <Navbar.Brand>
-          <Icon name="table" /> Velkoobjemáky
-        </Navbar.Brand>
         <Navbar.Toggle />
-      </Navbar.Header>
-      <Navbar.Collapse>
-        <Navbar.Form pullLeft>
+        <Navbar.Brand>
+          <Icon name="table" /> <span className="hidden-xs">Velkoobjemáky</span>
+        </Navbar.Brand>
+
+        <Navbar.Form pullLeft className="search-form">
           <SearchForm onSearch={onSearch}/>
         </Navbar.Form>
+      </Navbar.Header>
+
+      <Navbar.Collapse>
         <Navbar.Form pullRight>
           <GeoLocateButton onLocate={onLocate}/>
         </Navbar.Form>

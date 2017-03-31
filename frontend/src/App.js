@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import GoogleMap from 'google-map-react'
 import { observable } from 'mobx';
 import { observer } from 'mobx-react'
-import './App.css'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import Container from './Container'

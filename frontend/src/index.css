@@ -16,8 +16,50 @@ body {
   z-index: 999;
 }
 
-@media (max-width: 992px) {
-  .navbar .navbar-brand {
-    font-size: 18px;
+.icon {
+  font-size: 3em;
+}
+
+.fa-circle-o-notch {
+  animation: spinner infinite 1s linear;
+}
+
+.bs-callout {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #eee;
+    border-left-width: 5px;
+    border-radius: 3px;
+}
+
+.bs-callout-danger {
+  border-left-color: #ce4844;
+}
+
+.bs-callout-info {
+  border-left-color: #1b809e;
+}
+
+@keyframes spinner {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (min-width:767px) {
+  .search-form .input-group{
+    width: 400px;
   }
+}
+
+@media (min-width:0px) and (max-width:767px) {
+  .search-form {
+    margin: 0;
+    padding: 8px 10px;
+    border: 0;
+  }
+
+  .search-form .input-group {
+    padding: 0 10px;
+  }
+
 }

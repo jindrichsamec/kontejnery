@@ -84,7 +84,7 @@ export default observer(class SearchForm extends Component {
             {Object.keys(this.intervalLabels).map((i) => <option key={i} value={i}>{this._getLabel(i)}</option>)}
           </FormControl>
           <InputGroup.Button>
-            <Button type="button" bsStyle="primary" onClick={this._handleFormChange} disabled={this.obState.searching}>
+            <Button type="button" bsStyle="default" onClick={this._handleFormChange} disabled={this.obState.searching}>
               <Icon name={this.obState.searching ? 'circle-o-notch' : 'search'} />
             </Button>
           </InputGroup.Button>
