@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 import { Navbar } from 'react-bootstrap'
+import Icon from './Icon'
 import SearchForm from './SearchForm'
 import GeoLocateButton from './GeoLocateButton'
-import Icon from './Icon'
 
 const Controller = ({ onSearch, onLocate }) => {
 
@@ -11,7 +11,9 @@ const Controller = ({ onSearch, onLocate }) => {
       <Navbar.Header>
         <Navbar.Toggle />
         <Navbar.Brand>
-          <Icon name="table" /> <span className="hidden-xs" style={{fontFamily: 'Impact', fontWeight: 'normal'}}>Velkoobjemáky</span>
+          <span className="hidden-xs">Velk </span>
+          <Icon name="logo" size={24} />
+          <span className="hidden-xs"> objemáky</span>
         </Navbar.Brand>
 
         <Navbar.Form pullLeft className="search-form">

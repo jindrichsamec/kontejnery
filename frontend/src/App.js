@@ -5,6 +5,7 @@ import { observer } from 'mobx-react'
 import { Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
+import './assets/fonts.css'
 import Container from './Container'
 import Controller from './Controller'
 import Center from './Center'

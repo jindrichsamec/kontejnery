@@ -1,6 +1,6 @@
 import React from 'react'
 import Icon from './Icon'
-import {containerStyle} from './ContainerStyle'
+import {containerStyle} from './Container/ContainerStyle'
 
 const Center = (props) => {
   return <div style={containerStyle} className="top-marker progress-bar progress-bar-striped">

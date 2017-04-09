@@ -13,7 +13,11 @@ const containerStyle = {
   borderRadius: SIZE,
   textAlign: 'center',
   fontWeight: 'bold',
-  padding: '6px 4px'
+  padding: '3px 2px',
+  border: '3px solid green',
+  color: 'green',
+  background: 'white',
+  zIndex: +1,
 };
 
 

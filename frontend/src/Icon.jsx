@@ -6,7 +6,7 @@ const Icon = ({ name, size }) => {
     fontSize: size
   }
   return(
-    <span className={className} style={style}></span>
+    <span className={className} style={style} />
   )
 }
 
