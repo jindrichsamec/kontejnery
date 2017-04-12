@@ -58,7 +58,16 @@ export default observer(class SearchForm extends Component {
 
   _handleSuccess = (response) => {
     this.obState.searching = false
-    response.json().then(json => this.props.onSearch(json.data));
+
+    response.json().then(this.normalizeData)
+      .then(data => this.props.onSearch(data));
+  }
+
+  normalizeData(json) {
+    return json.data.map((item) => {
+      const till = new Date(item.till);
+      return {...item, till}
+    });
   }
 
   _handleFail = (response) => {
