@@ -64,9 +64,16 @@ export default observer(class SearchForm extends Component {
   }
 
   normalizeData(json) {
-    return json.data.map((item) => {
+    const data = json.data.map((item) => {
       const till = new Date(item.till);
       return {...item, till}
+    });
+    const ids = []
+
+    return data.filter((item) => {
+      const included = (ids.indexOf(item.id) > -1)
+      ids.push(item.id)
+      return !included;
     });
   }
 

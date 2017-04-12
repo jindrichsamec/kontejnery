@@ -3,7 +3,7 @@ import SearchForm from './SearchForm'
 describe('SearchForm', () => {
 
   it('renders without crashing', () => {
-    const wrapper = shallow(<SearchForm />);
+    const wrapper = shallow(<SearchForm onSearch={jest.fn}/>);
     expect(wrapper).toMatchSnapshot();
   });
 

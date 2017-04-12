@@ -11,9 +11,11 @@ def get_container(container_id, since):
     return {'id': container.id, 'name': container.name, 'coordinates': container.get_coordinates(), 'terms': terms}
 
 def list_containers(since, till):
-    result = db.session.query(Container, Term).join(Term).\
+    result = db.session.query(Container, Term).\
+        join(Term).\
         filter(Container.coordinates != None).\
         filter(Term.datetime_from >= since).\
-        filter(Term.datetime_to <= till)
+        filter(Term.datetime_to <= till).\
+        order_by(Term.datetime_from.desc())
 
     return [{'id': container.id, 'name': container.name, 'coordinates': container.get_coordinates(), 'till': term.datetime_to} for (container, term) in result]
