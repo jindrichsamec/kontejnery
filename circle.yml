@@ -3,13 +3,21 @@ general:
 
 machine:
   node:
-    version: 6.5.0
+    version: 7.6.0
+
+dependencies:
+  override:
+    - yarn install
+
+test:
+  override:
+    - yarn test
 
 deployment:
   prod:
     branch: master
     commands:
-      - npm run build
+      - yarn run build
       - aws s3 sync ./build s3://www.velkoobjemaky.cz/ --delete --region=eu-central-1 --acl=public-read
       - aws configure set preview.cloudfront true
       - aws cloudfront create-invalidation --distribution-id $AWS_DISTRIBUTION_ID --paths / /index.html

@@ -1,5 +1,6 @@
 import json
 import geoalchemy2.functions as func
+from datetime import datetime
 from database import db
 from geoalchemy2.types import Geography
 from .term import Term
@@ -17,6 +18,8 @@ class Container(db.Model):
     name = db.Column(db.String(255), nullable=False)
     slug = db.Column(db.String(255), nullable=False)
     coordinates = db.Column(Geography('POINT', srid=4326))
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.now)
+    updated_at = db.Column(db.DateTime, nullable=False, default=datetime.now, onupdate=datetime.now)
 
     def get_coordinates(self):
         if self.coordinates is None:

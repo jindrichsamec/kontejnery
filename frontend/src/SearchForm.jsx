@@ -58,7 +58,23 @@ export default observer(class SearchForm extends Component {
 
   _handleSuccess = (response) => {
     this.obState.searching = false
-    response.json().then(json => this.props.onSearch(json.data));
+
+    response.json().then(this.normalizeData)
+      .then(data => this.props.onSearch(data));
+  }
+
+  normalizeData(json) {
+    const data = json.data.map((item) => {
+      const till = new Date(item.till);
+      return {...item, till}
+    });
+    const ids = []
+
+    return data.filter((item) => {
+      const included = (ids.indexOf(item.id) > -1)
+      ids.push(item.id)
+      return !included;
+    });
   }
 
   _handleFail = (response) => {

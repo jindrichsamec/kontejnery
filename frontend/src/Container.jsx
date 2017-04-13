@@ -20,7 +20,12 @@ export default observer(class Container extends Component {
   }
 
   render() {
-    const style = this.props.$hover ? containerHovered : containerStyle;
+    const { till, $hover } = this.props
+    let style = $hover ? containerHovered : containerStyle;
+
+    if (till.getTime() < Date.now()) {
+      style = {...style, opacity: 0.6};
+    }
     return (
       <div className="progress-bar-success progress-bar-striped" style={style} onClick={this.handleClick}>
         <Icon name="table" size={18}/>
