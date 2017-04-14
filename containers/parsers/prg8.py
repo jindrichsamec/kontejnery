@@ -22,8 +22,10 @@ def parse_table(table, containers_list):
 def parse_row(row):
     tds = row.find_all('td')
     datetime_from, datetime_to = parse_datetime_interval(tds[0].text.strip(), tds[1].text.strip())
+    name = '{} ({})'.format(tds[2].text.strip(), tds[3].text.strip()) if len(tds) > 3 else tds[2].text.strip()
+
     return {
-        'name': '{} ({})'.format(tds[2].text.strip(), tds[3].text.strip()),
+        'name': name,
         'datetime_from': datetime_from,
         'datetime_to': datetime_to
     }
