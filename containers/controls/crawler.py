@@ -33,12 +33,13 @@ def parse_data(string):
     return parse(string)
 
 def normalize_name(name):
+    name = name[:name.rfind('(')]
     return slugify(name)
 
 
 def create_container(name, datetime_from, datetime_to):
     slug = normalize_name(name)
-    container = Container.query.filter_by(slug = slug).first()
+    container = Container.query.filter(Container.slug.like(slug + '%')).first()
     new_terms = 0
     new_containers = 0
 
