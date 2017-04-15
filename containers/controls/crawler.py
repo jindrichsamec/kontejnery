@@ -33,7 +33,8 @@ def parse_data(string):
     return parse(string)
 
 def normalize_name(name):
-    name = name[:name.rfind('(')]
+    bracket_position = name.rfind('(')
+    name = name[:bracket_position] if bracket_position > -1 else name
     return slugify(name)
 
 

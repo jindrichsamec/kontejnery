@@ -3,6 +3,7 @@ from containers.controls.crawler import *
 
 
 normalize_name_test_data = [
+  ("U Sluncové", 'u-sluncove'),
   ("U Sluncové x Za Invalidovnou (parkoviště)", 'u-sluncove-x-za-invalidovnou'),
   ("U Sluncové x Za Invalidovnou (parkoviště) (Kobylisy)", 'u-sluncove-x-za-invalidovnou-parkoviste'),
   ("Pekařova x Jestřebická (Kobylisy)", 'pekarova-x-jestrebicka'),
