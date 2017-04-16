@@ -16,14 +16,13 @@ export default observer(class SearchForm extends Component {
   intervalLabels = {
     [interval.TODAY]: 'Dnes',
     [interval.TOMORROW]: 'Zítra',
-    [interval.THIS_WEEK]: 'Tento týden',
-    [interval.NEXT_WEEK]: 'Příští týden',
+    [interval.NEXT_SEVEN_DAYS]: 'Příštích 7 dní',
     [interval.THIS_MONTH]: 'Tento měsíc',
   }
 
   obState = observable({
     searching: false,
-    dateInterval: interval.THIS_WEEK
+    dateInterval: interval.NEXT_SEVEN_DAYS
   });
 
   componentDidMount = () => {

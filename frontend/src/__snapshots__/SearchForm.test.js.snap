@@ -13,7 +13,7 @@ ShallowWrapper {
         <FormControl
             bsClass="form-control"
             componentClass="select"
-            defaultValue="THIS_WEEK"
+            defaultValue="NEXT_SEVEN_DAYS"
             inputRef={[Function]}
             onChange={[Function]}
             placeholder="Select one...">
@@ -26,12 +26,8 @@ ShallowWrapper {
                 Zítra
             </option>
             <option
-                value="THIS_WEEK">
-                Tento týden
-            </option>
-            <option
-                value="NEXT_WEEK">
-                Příští týden
+                value="NEXT_SEVEN_DAYS">
+                Příštích 7 dní
             </option>
             <option
                 value="THIS_MONTH">
@@ -62,7 +58,7 @@ ShallowWrapper {
             <FormControl
                   bsClass="form-control"
                   componentClass="select"
-                  defaultValue="THIS_WEEK"
+                  defaultValue="NEXT_SEVEN_DAYS"
                   inputRef={[Function]}
                   onChange={[Function]}
                   placeholder="Select one...">
@@ -75,12 +71,8 @@ ShallowWrapper {
                         Zítra
                   </option>
                   <option
-                        value="THIS_WEEK">
-                        Tento týden
-                  </option>
-                  <option
-                        value="NEXT_WEEK">
-                        Příští týden
+                        value="NEXT_SEVEN_DAYS">
+                        Příštích 7 dní
                   </option>
                   <option
                         value="THIS_MONTH">
@@ -125,14 +117,13 @@ ShallowWrapper {
         "componentDidMount": [Function],
         "context": Object {},
         "intervalLabels": Object {
-          "NEXT_WEEK": "Příští týden",
+          "NEXT_SEVEN_DAYS": "Příštích 7 dní",
           "THIS_MONTH": "Tento měsíc",
-          "THIS_WEEK": "Tento týden",
           "TODAY": "Dnes",
           "TOMORROW": "Zítra",
         },
         "obState": Object {
-          "dateInterval": "THIS_WEEK",
+          "dateInterval": "NEXT_SEVEN_DAYS",
           "searching": false,
         },
         "props": Object {
@@ -166,7 +157,7 @@ ShallowWrapper {
                     <FormControl
                               bsClass="form-control"
                               componentClass="select"
-                              defaultValue="THIS_WEEK"
+                              defaultValue="NEXT_SEVEN_DAYS"
                               inputRef={[Function]}
                               onChange={[Function]}
                               placeholder="Select one...">
@@ -179,12 +170,8 @@ ShallowWrapper {
                                         Zítra
                               </option>
                               <option
-                                        value="THIS_WEEK">
-                                        Tento týden
-                              </option>
-                              <option
-                                        value="NEXT_WEEK">
-                                        Příští týden
+                                        value="NEXT_SEVEN_DAYS">
+                                        Příštích 7 dní
                               </option>
                               <option
                                         value="THIS_MONTH">
@@ -215,7 +202,7 @@ ShallowWrapper {
                     <FormControl
                               bsClass="form-control"
                               componentClass="select"
-                              defaultValue="THIS_WEEK"
+                              defaultValue="NEXT_SEVEN_DAYS"
                               inputRef={[Function]}
                               onChange={[Function]}
                               placeholder="Select one...">
@@ -228,12 +215,8 @@ ShallowWrapper {
                                         Zítra
                               </option>
                               <option
-                                        value="THIS_WEEK">
-                                        Tento týden
-                              </option>
-                              <option
-                                        value="NEXT_WEEK">
-                                        Příští týden
+                                        value="NEXT_SEVEN_DAYS">
+                                        Příštích 7 dní
                               </option>
                               <option
                                         value="THIS_MONTH">

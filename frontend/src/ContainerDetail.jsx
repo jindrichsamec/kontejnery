@@ -3,7 +3,8 @@ import { Modal, Button } from 'react-bootstrap'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import Icon from './Icon'
-import { formatDate, formatDayName, formatTimeInterval } from './utils/DateInterval'
+import { formatTimeInterval } from './utils/DateInterval'
+import { formatDate, formatDayName } from './utils/DateTime'
 import SearchQuery from './model/SearchQuery'
 
 export default observer(class ContainerDetail extends Component {

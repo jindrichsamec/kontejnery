@@ -5,6 +5,7 @@
   "devDependencies": {
     "enzyme": "^2.8.1",
     "jest-enzyme": "^2.1.2",
+    "mockdate": "^2.0.1",
     "react-addons-test-utils": "^15.5.1",
     "react-scripts": "^0.9.5",
     "react-test-renderer": "^15.5.4"

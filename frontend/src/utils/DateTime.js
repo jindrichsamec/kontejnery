@@ -4,11 +4,15 @@ export const getToday = () => {
   return now;
 }
 
-export const getModayDate = (current) => {
-  const diff = current.getDay() === 0 ? 6 : (current.getDay() - 1)
-  return new Date(current.getFullYear(), current.getMonth(), current.getDate() - diff, 0, 0, 0);
-}
-
 export const getTomorrowDate = (baseDate = getToday()) => {
   return new Date(baseDate.getFullYear(), baseDate.getMonth(), baseDate.getDate() + 1, 0, 0, 0)
+}
+
+export const formatDayName = (day) => {
+  const dayNames = ['Pondělí', 'Úterý', 'Středa', 'Čtvrtek', 'Pátek', 'Sobota', 'Neděle']
+  return dayNames[day - 1] || '';
+}
+
+export const formatDate = (date) => {
+  return `${date.getDate()}. ${date.getMonth() + 1}. ${date.getFullYear()}`
 }
