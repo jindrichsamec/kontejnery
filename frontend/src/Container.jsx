@@ -7,7 +7,7 @@ import {containerStyle, containerHovered} from './ContainerStyle';
 export default observer(class Container extends Component {
 
   static propTypes = {
-    id: PropTypes.number.isRequired,
+    slug: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     onClick: PropTypes.func.isRequired
   }
@@ -15,8 +15,8 @@ export default observer(class Container extends Component {
   showDetail = observable(false);
 
   handleClick = e => {
-    const {onClick, id, name} = this.props;
-    onClick(id, name);
+    const {onClick, slug, name} = this.props;
+    onClick(slug, name);
   }
 
   render() {

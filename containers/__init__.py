@@ -9,13 +9,8 @@ from .views import *
 def register_container(app):
 
     api = Api(app, prefix='/api')
-    api.add_resource(ContainerDetail, '/<int:container_id>')
+    api.add_resource(ContainerDetail, '/<string:slug>')
     api.add_resource(ContainerList, '/list')
-
-    #user_blueprint = Blueprint('web_user', __name__, template_folder='templates', url_prefix='/web/user')
-    #user_blueprint.add_url_rule('/list', view_func=user_listing, endpoint='web_user_listing')
-    #user_blueprint.add_url_rule('/<int:user_id>', view_func=user_detail, endpoint='web_user_detail')
-    #app.register_blueprint(user_blueprint)
 
     @app.route('/.well-known/acme-challenge/<string:lets_encrypt_key>')
     def letsencrypt(lets_encrypt_key):

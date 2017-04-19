@@ -31,9 +31,9 @@ export default observer(class App extends Component {
     this.model.center = {lat, lng}
   }
 
-  handleContainerClick = (id, name) => {
+  handleContainerClick = (slug, name) => {
     const { history } = this.props
-    history.push(`/kontejner/${id}`, {name});
+    history.push(`/kontejner/${slug}`, {name});
   }
 
   render() {
@@ -60,11 +60,11 @@ export default observer(class App extends Component {
                 return (<Container
                     {...container}
                     {...container.coordinates}
-                    key={container.id}
+                    key={container.slug}
                     onClick={this.handleContainerClick} />)
               })}
             </GoogleMap>
-            <Route path="/kontejner/:id" component={ContainerDetail} />
+            <Route path="/kontejner/:slug" component={ContainerDetail} />
           </div>
         </div>
       </span>

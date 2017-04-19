@@ -14,9 +14,9 @@ export default observer(class ContainerDetail extends Component {
   })
 
   componentDidMount() {
-    const { match: { params: { id }}} = this.props
+    const { match: { params: { slug }}} = this.props
     const since = SearchQuery.since.toISOString();
-    fetch(`${process.env.REACT_APP_API_HOST}/api/${id}?since=${since}`).then(this.handleSuccess, this.handleFail)
+    fetch(`${process.env.REACT_APP_API_HOST}/api/${slug}?since=${since}`).then(this.handleSuccess, this.handleFail)
   }
 
   normalizeData = (data) => {
@@ -46,7 +46,7 @@ export default observer(class ContainerDetail extends Component {
 
   handleClose = () => {
     const { history } = this.props
-    history.goBack()
+    history.push('/')
   }
 
   setDetailInfo = (info) => {
@@ -94,8 +94,14 @@ export default observer(class ContainerDetail extends Component {
   }
 
   render() {
-    const { location: {state: { name }}} = this.props;
+    const {location: {state}} = this.props
+    let name = state ? state.name : ''
+
     const { detailInfo } = this.model
+    if (name === '') {
+      name = detailInfo ? detailInfo.name : ''
+    }
+
 
     return (<Modal show={true} onHide={this.handleClose}>
       <Modal.Header closeButton>

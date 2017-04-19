@@ -13,12 +13,12 @@ def convert_to_datetime(datetime_string):
 
 
 class ContainerDetail(Resource):
-    def get(self, container_id):
+    def get(self, slug):
         parser = reqparse.RequestParser()
         parser.add_argument('since', type=convert_to_datetime, required=True)
         args = parser.parse_args()
         try:
-            data = get_container(container_id, args['since'])
+            data = get_container(slug, args['since'])
             return {'status_code': 200, 'data': data}
         except ContainerNotFound:
             return {'status_code': 404}, 404

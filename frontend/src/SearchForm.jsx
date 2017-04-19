@@ -67,11 +67,11 @@ export default observer(class SearchForm extends Component {
       const till = new Date(item.till);
       return {...item, till}
     });
-    const ids = []
+    const slugs = []
 
     return data.filter((item) => {
-      const included = (ids.indexOf(item.id) > -1)
-      ids.push(item.id)
+      const included = (slugs.indexOf(item.slug) > -1)
+      slugs.push(item.slug)
       return !included;
     });
   }
