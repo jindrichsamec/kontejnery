@@ -1,6 +1,10 @@
 import ContainerDetail from './ContainerDetail'
 
 it('renders without crashing', () => {
-  const wrapper = shallow(<ContainerDetail name="Test" id={4} onClose={jest.fn}/>);
+  const props = {
+    location: {state: {name:"Test"}},
+    match: {params: {id: 4}}
+  }
+  const wrapper = shallow(<ContainerDetail {...props} />);
   expect(wrapper).toMatchSnapshot();
 });

@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { Modal, Button } from 'react-bootstrap'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
@@ -9,19 +9,14 @@ import SearchQuery from './model/SearchQuery'
 
 export default observer(class ContainerDetail extends Component {
 
-  static propTypes = {
-    id: PropTypes.number.isRequired,
-    name: PropTypes.string.isRequired,
-    onClose: PropTypes.func.isRequired
-  }
-
   model = observable({
     detailInfo: null
   })
 
   componentDidMount() {
+    const { match: { params: { id }}} = this.props
     const since = SearchQuery.since.toISOString();
-    fetch(`${process.env.REACT_APP_API_HOST}/api/${this.props.id}?since=${since}`).then(this.handleSuccess, this.handleFail)
+    fetch(`${process.env.REACT_APP_API_HOST}/api/${id}?since=${since}`).then(this.handleSuccess, this.handleFail)
   }
 
   normalizeData = (data) => {
@@ -47,6 +42,11 @@ export default observer(class ContainerDetail extends Component {
 
   handleFail = () => {
     console.error('Error during the request');
+  }
+
+  handleClose = () => {
+    const { history } = this.props
+    history.goBack()
   }
 
   setDetailInfo = (info) => {
@@ -94,10 +94,10 @@ export default observer(class ContainerDetail extends Component {
   }
 
   render() {
-    const { onClose, name } = this.props;
+    const { location: {state: { name }}} = this.props;
     const { detailInfo } = this.model
 
-    return (<Modal show={true} onHide={onClose}>
+    return (<Modal show={true} onHide={this.handleClose}>
       <Modal.Header closeButton>
         <Modal.Title>{name}</Modal.Title>
       </Modal.Header>
@@ -106,7 +106,7 @@ export default observer(class ContainerDetail extends Component {
         {detailInfo && this.renderInfo()}
       </Modal.Body>
       <Modal.Footer>
-        <Button className="btn btn-default" onClick={onClose}>Zavřít</Button>
+        <Button className="btn btn-default" onClick={this.handleClose}>Zavřít</Button>
       </Modal.Footer>
     </Modal>);
   }

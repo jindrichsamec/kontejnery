@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import GoogleMap from 'google-map-react'
 import { observable } from 'mobx';
 import { observer } from 'mobx-react'
+import { Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import Container from './Container'
@@ -19,8 +20,7 @@ export default observer(class App extends Component {
 
   model = observable({
     containers: [],
-    center: null,
-    selectedContainer: null
+    center: null
   });
 
   handleSearch = (data) => {
@@ -32,16 +32,13 @@ export default observer(class App extends Component {
   }
 
   handleContainerClick = (id, name) => {
-    this.model.selectedContainer = {id, name}
-  }
-
-  handleCloseDetail = () => {
-    this.model.selectedContainer = null;
+    const { history } = this.props
+    history.push(`/kontejner/${id}`, {name});
   }
 
   render() {
     const { defaultCenter, defaultZoom, apiKey } = this.props;
-    const { center, containers, selectedContainer } = this.model;
+    const { center, containers } = this.model;
     const bootstrapURLKeys = {
       key: apiKey,
     };
@@ -61,13 +58,13 @@ export default observer(class App extends Component {
               {center && <Center {...center} />}
               {containers.map((container) => {
                 return (<Container
-                  {...container}
-                  {...container.coordinates}
-                  key={container.id}
-                  onClick={this.handleContainerClick} />)
+                    {...container}
+                    {...container.coordinates}
+                    key={container.id}
+                    onClick={this.handleContainerClick} />)
               })}
-              {selectedContainer && <ContainerDetail {...selectedContainer} onClose={this.handleCloseDetail} />}
             </GoogleMap>
+            <Route path="/kontejner/:id" component={ContainerDetail} />
           </div>
         </div>
       </span>
