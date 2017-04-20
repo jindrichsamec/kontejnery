@@ -29,7 +29,8 @@ class Container(db.Model):
 
 
     def get_terms(self, since):
-        terms = self.terms.filter(Term.datetime_from >= since)
+        terms = self.terms.filter(Term.datetime_from >= since).\
+            order_by(Term.datetime_from)
 
         return [{'id': term.id, 'since': term.datetime_from, 'till': term.datetime_to} for term in terms]
 
