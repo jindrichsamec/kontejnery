@@ -6,95 +6,81 @@ ShallowWrapper {
     "findWhereUnwrapped": [Function],
   },
   "length": 1,
-  "node": <FormGroup
-    bsClass="form-group">
-    <InputGroup
-        bsClass="input-group">
-        <FormControl
-            bsClass="form-control"
-            componentClass="select"
-            defaultValue="NEXT_SEVEN_DAYS"
-            inputRef={[Function]}
-            onChange={[Function]}
-            placeholder="Select one...">
-            <option
-                value="TODAY">
-                Dnes
-            </option>
-            <option
-                value="TOMORROW">
-                Zítra
-            </option>
-            <option
-                value="NEXT_SEVEN_DAYS">
-                Příštích 7 dní
-            </option>
-            <option
-                value="THIS_MONTH">
-                Tento měsíc
-            </option>
-        </FormControl>
-        <InputGroupButton
-            bsClass="input-group-btn">
-            <Button
-                active={false}
-                block={false}
-                bsClass="btn"
-                bsStyle="default"
-                disabled={false}
-                onClick={[Function]}
-                type="button">
-                <Icon
-                    name="search" />
-            </Button>
-        </InputGroupButton>
-    </InputGroup>
-</FormGroup>,
+  "node": <DropdownButton
+    bsSize="large"
+    id="search-form"
+    title="Příštích 7 dní">
+    <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        onClick={[Function]}>
+        Dnes
+    </MenuItem>
+    <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        onClick={[Function]}>
+        Zítra
+    </MenuItem>
+    <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        onClick={[Function]}>
+        Příštích 7 dní
+    </MenuItem>
+    <MenuItem
+        bsClass="dropdown"
+        disabled={false}
+        divider={false}
+        header={false}
+        onClick={[Function]}>
+        Tento měsíc
+    </MenuItem>
+</DropdownButton>,
   "nodes": Array [
-    <FormGroup
-      bsClass="form-group">
-      <InputGroup
-            bsClass="input-group">
-            <FormControl
-                  bsClass="form-control"
-                  componentClass="select"
-                  defaultValue="NEXT_SEVEN_DAYS"
-                  inputRef={[Function]}
-                  onChange={[Function]}
-                  placeholder="Select one...">
-                  <option
-                        value="TODAY">
-                        Dnes
-                  </option>
-                  <option
-                        value="TOMORROW">
-                        Zítra
-                  </option>
-                  <option
-                        value="NEXT_SEVEN_DAYS">
-                        Příštích 7 dní
-                  </option>
-                  <option
-                        value="THIS_MONTH">
-                        Tento měsíc
-                  </option>
-            </FormControl>
-            <InputGroupButton
-                  bsClass="input-group-btn">
-                  <Button
-                        active={false}
-                        block={false}
-                        bsClass="btn"
-                        bsStyle="default"
-                        disabled={false}
-                        onClick={[Function]}
-                        type="button">
-                        <Icon
-                              name="search" />
-                  </Button>
-            </InputGroupButton>
-      </InputGroup>
-</FormGroup>,
+    <DropdownButton
+      bsSize="large"
+      id="search-form"
+      title="Příštích 7 dní">
+      <MenuItem
+            bsClass="dropdown"
+            disabled={false}
+            divider={false}
+            header={false}
+            onClick={[Function]}>
+            Dnes
+      </MenuItem>
+      <MenuItem
+            bsClass="dropdown"
+            disabled={false}
+            divider={false}
+            header={false}
+            onClick={[Function]}>
+            Zítra
+      </MenuItem>
+      <MenuItem
+            bsClass="dropdown"
+            disabled={false}
+            divider={false}
+            header={false}
+            onClick={[Function]}>
+            Příštích 7 dní
+      </MenuItem>
+      <MenuItem
+            bsClass="dropdown"
+            disabled={false}
+            divider={false}
+            header={false}
+            onClick={[Function]}>
+            Tento měsíc
+      </MenuItem>
+</DropdownButton>,
   ],
   "options": Object {},
   "renderer": ReactShallowRenderer {
@@ -108,14 +94,14 @@ ShallowWrapper {
       "_hostContainerInfo": null,
       "_hostParent": null,
       "_instance": SearchForm {
-        "_dateToString": [Function],
-        "_getListUrl": [Function],
-        "_handleFail": [Function],
-        "_handleFormChange": [Function],
-        "_handleSuccess": [Function],
         "_reactInternalInstance": [Circular],
         "componentDidMount": [Function],
         "context": Object {},
+        "dateToString": [Function],
+        "getListEndpointUrl": [Function],
+        "handleClick": [Function],
+        "handleFail": [Function],
+        "handleSuccess": [Function],
         "intervalLabels": Object {
           "NEXT_SEVEN_DAYS": "Příštích 7 dní",
           "THIS_MONTH": "Tento měsíc",
@@ -131,6 +117,7 @@ ShallowWrapper {
         },
         "refs": Object {},
         "render": [Function],
+        "renderMenu": [Function],
         "state": null,
         "updater": Object {
           "enqueueCallback": [Function],
@@ -150,95 +137,81 @@ ShallowWrapper {
       "_pendingReplaceState": false,
       "_pendingStateQueue": null,
       "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <FormGroup
-          bsClass="form-group">
-          <InputGroup
-                    bsClass="input-group">
-                    <FormControl
-                              bsClass="form-control"
-                              componentClass="select"
-                              defaultValue="NEXT_SEVEN_DAYS"
-                              inputRef={[Function]}
-                              onChange={[Function]}
-                              placeholder="Select one...">
-                              <option
-                                        value="TODAY">
-                                        Dnes
-                              </option>
-                              <option
-                                        value="TOMORROW">
-                                        Zítra
-                              </option>
-                              <option
-                                        value="NEXT_SEVEN_DAYS">
-                                        Příštích 7 dní
-                              </option>
-                              <option
-                                        value="THIS_MONTH">
-                                        Tento měsíc
-                              </option>
-                    </FormControl>
-                    <InputGroupButton
-                              bsClass="input-group-btn">
-                              <Button
-                                        active={false}
-                                        block={false}
-                                        bsClass="btn"
-                                        bsStyle="default"
-                                        disabled={false}
-                                        onClick={[Function]}
-                                        type="button">
-                                        <Icon
-                                                  name="search" />
-                              </Button>
-                    </InputGroupButton>
-          </InputGroup>
-</FormGroup>,
+        "_currentElement": <DropdownButton
+          bsSize="large"
+          id="search-form"
+          title="Příštích 7 dní">
+          <MenuItem
+                    bsClass="dropdown"
+                    disabled={false}
+                    divider={false}
+                    header={false}
+                    onClick={[Function]}>
+                    Dnes
+          </MenuItem>
+          <MenuItem
+                    bsClass="dropdown"
+                    disabled={false}
+                    divider={false}
+                    header={false}
+                    onClick={[Function]}>
+                    Zítra
+          </MenuItem>
+          <MenuItem
+                    bsClass="dropdown"
+                    disabled={false}
+                    divider={false}
+                    header={false}
+                    onClick={[Function]}>
+                    Příštích 7 dní
+          </MenuItem>
+          <MenuItem
+                    bsClass="dropdown"
+                    disabled={false}
+                    divider={false}
+                    header={false}
+                    onClick={[Function]}>
+                    Tento měsíc
+          </MenuItem>
+</DropdownButton>,
         "_debugID": 2,
-        "_renderedOutput": <FormGroup
-          bsClass="form-group">
-          <InputGroup
-                    bsClass="input-group">
-                    <FormControl
-                              bsClass="form-control"
-                              componentClass="select"
-                              defaultValue="NEXT_SEVEN_DAYS"
-                              inputRef={[Function]}
-                              onChange={[Function]}
-                              placeholder="Select one...">
-                              <option
-                                        value="TODAY">
-                                        Dnes
-                              </option>
-                              <option
-                                        value="TOMORROW">
-                                        Zítra
-                              </option>
-                              <option
-                                        value="NEXT_SEVEN_DAYS">
-                                        Příštích 7 dní
-                              </option>
-                              <option
-                                        value="THIS_MONTH">
-                                        Tento měsíc
-                              </option>
-                    </FormControl>
-                    <InputGroupButton
-                              bsClass="input-group-btn">
-                              <Button
-                                        active={false}
-                                        block={false}
-                                        bsClass="btn"
-                                        bsStyle="default"
-                                        disabled={false}
-                                        onClick={[Function]}
-                                        type="button">
-                                        <Icon
-                                                  name="search" />
-                              </Button>
-                    </InputGroupButton>
-          </InputGroup>
-</FormGroup>,
+        "_renderedOutput": <DropdownButton
+          bsSize="large"
+          id="search-form"
+          title="Příštích 7 dní">
+          <MenuItem
+                    bsClass="dropdown"
+                    disabled={false}
+                    divider={false}
+                    header={false}
+                    onClick={[Function]}>
+                    Dnes
+          </MenuItem>
+          <MenuItem
+                    bsClass="dropdown"
+                    disabled={false}
+                    divider={false}
+                    header={false}
+                    onClick={[Function]}>
+                    Zítra
+          </MenuItem>
+          <MenuItem
+                    bsClass="dropdown"
+                    disabled={false}
+                    divider={false}
+                    header={false}
+                    onClick={[Function]}>
+                    Příštích 7 dní
+          </MenuItem>
+          <MenuItem
+                    bsClass="dropdown"
+                    disabled={false}
+                    divider={false}
+                    header={false}
+                    onClick={[Function]}>
+                    Tento měsíc
+          </MenuItem>
+</DropdownButton>,
       },
       "_renderedNodeType": 1,
       "_rootNodeID": 0,

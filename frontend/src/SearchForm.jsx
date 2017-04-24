@@ -2,8 +2,7 @@ import React, { PropTypes, Component } from 'react'
 import 'whatwg-fetch'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
-import { FormGroup, FormControl, Button, InputGroup } from 'react-bootstrap'
-import Icon from './Icon'
+import { MenuItem, DropdownButton } from 'react-bootstrap'
 import { interval, convertIntervalToDates } from './utils/DateInterval'
 import SearchQuery from './model/SearchQuery'
 
@@ -22,40 +21,41 @@ export default observer(class SearchForm extends Component {
 
   obState = observable({
     searching: false,
-    dateInterval: interval.NEXT_SEVEN_DAYS
+    dateInterval: interval.NEXT_SEVEN_DAYS,
   });
 
   componentDidMount = () => {
-    this._doSearch(this.obState.dateInterval)
+    this.doSearch(this.obState.dateInterval)
   }
 
-  _dateToString = (date) => {
+  dateToString = (date) => {
     if (date === null) {
       return ''
     }
     return date.toISOString();
   }
 
-  _getListUrl = (since, till) => {
+  getListEndpointUrl = (since, till) => {
     return `${process.env.REACT_APP_API_HOST}/api/list?since=%SINCE%&till=%TILL%`
-      .replace('%SINCE%', this._dateToString(since))
-      .replace('%TILL%', this._dateToString(till));
+      .replace('%SINCE%', this.dateToString(since))
+      .replace('%TILL%', this.dateToString(till));
   }
 
-  _handleFormChange = (e) => {
+  handleClick = (value) => {
+    this.obState.dateInterval = value
     this.obState.searching = true
-    this._doSearch(this.selection.value)
+    this.doSearch(value)
   }
 
-  _doSearch(interval) {
+  doSearch(interval) {
     const {since, till} = convertIntervalToDates(interval)
     SearchQuery.since = since;
     SearchQuery.till = till;
-    const url = this._getListUrl(since, till)
-    fetch(url).then(this._handleSuccess, this._handleFail)
+    const url = this.getListEndpointUrl(since, till)
+    fetch(url).then(this.handleSuccess, this.handleFail)
   }
 
-  _handleSuccess = (response) => {
+  handleSuccess = (response) => {
     this.obState.searching = false
 
     response.json().then(this.normalizeData)
@@ -76,35 +76,24 @@ export default observer(class SearchForm extends Component {
     });
   }
 
-  _handleFail = (response) => {
+  handleFail = (response) => {
     this.obState.searching = false
     console.error('Error during request');
   }
 
-  _getLabel(interval) {
+  getLabel(interval) {
     return this.intervalLabels[interval];
+  }
+
+  renderMenu =(value, index) => {
+    return <MenuItem key={index} onClick={() => this.handleClick(value)}>{this.getLabel(value)}</MenuItem>
   }
 
   render() {
     return(
-      <FormGroup>
-        <InputGroup>
-          <FormControl
-            componentClass="select"
-            placeholder="Select one..."
-            ref='intervalSelect'
-            inputRef={ref => this.selection = ref}
-            onChange={this._handleFormChange}
-            defaultValue={this.obState.dateInterval}>
-            {Object.keys(this.intervalLabels).map((i) => <option key={i} value={i}>{this._getLabel(i)}</option>)}
-          </FormControl>
-          <InputGroup.Button>
-            <Button type="button" bsStyle="default" onClick={this._handleFormChange} disabled={this.obState.searching}>
-              <Icon name={this.obState.searching ? 'circle-o-notch' : 'search'} />
-            </Button>
-          </InputGroup.Button>
-        </InputGroup>
-      </FormGroup>
+      <DropdownButton bsSize="large" title={this.getLabel(this.obState.dateInterval)} id="search-form">
+        {Object.keys(this.intervalLabels).map(this.renderMenu)}
+      </DropdownButton>
     )
   }
 

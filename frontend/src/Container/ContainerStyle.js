@@ -1,23 +1,28 @@
 
 const SIZE = 30;
 
-const containerStyle = {
-  // initially any map object has left top corner at lat lng coordinates
-  // it's on you to set object origin to 0,0 coordinates
-  position: 'absolute',
+const iconBase = {
   width: SIZE,
   height: SIZE,
-  left: -SIZE / 2,
-  top: -SIZE / 2,
+  display: 'inline-block',
   backgroundClip: 'padding-box',
   borderRadius: SIZE,
   textAlign: 'center',
   fontWeight: 'bold',
-  padding: '3px 2px',
-  border: '3px solid green',
-  color: 'green',
+  padding: '4px 3px',
+  border: '1px solid #58cf90',
+  color: '#58cf90',
   background: 'white',
   zIndex: +1,
+}
+
+const containerStyle = {
+  // initially any map object has left top corner at lat lng coordinates
+  // it's on you to set object origin to 0,0 coordinates
+  ...iconBase,
+  position: 'absolute',
+  left: -SIZE / 2,
+  top: -SIZE / 2
 };
 
 
@@ -26,4 +31,17 @@ const containerHovered = {
   cursor: 'pointer'
 }
 
-export {containerStyle, SIZE, containerHovered}
+const expiredStyle = {
+  ...containerStyle,
+  color: 'silver',
+  borderColor: 'silver',
+  zIndex: 0
+}
+
+export {
+  containerStyle,
+  SIZE,
+  containerHovered,
+  iconBase,
+  expiredStyle
+}

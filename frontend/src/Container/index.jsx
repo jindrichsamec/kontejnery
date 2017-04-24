@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import Icon from '../Icon'
-import {containerStyle, containerHovered} from './ContainerStyle';
+import {containerStyle, containerHovered, expiredStyle} from './ContainerStyle';
 
 export default observer(class Container extends Component {
 
@@ -24,7 +24,7 @@ export default observer(class Container extends Component {
     let style = $hover ? containerHovered : containerStyle;
 
     if (till.getTime() < Date.now()) {
-      style = {...style, color: 'silver', borderColor: 'silver', zIndex: 0};
+      style = expiredStyle;
     }
     return (
       <div style={style} onClick={this.handleClick}>
