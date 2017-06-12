@@ -3,8 +3,8 @@ import 'whatwg-fetch'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
 import { MenuItem, DropdownButton } from 'react-bootstrap'
-import { interval, convertIntervalToDates } from './utils/DateInterval'
-import SearchQuery from './model/SearchQuery'
+import { interval, convertIntervalToDates } from '../utils/DateInterval'
+import SearchQuery from '../model/SearchQuery'
 
 export default observer(class SearchForm extends Component {
 

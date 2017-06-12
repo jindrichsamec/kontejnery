@@ -1,315 +1,66 @@
-exports[`test renders without crashing 1`] = `
-ShallowWrapper {
-  "complexSelector": ComplexSelector {
-    "buildPredicate": [Function],
-    "childrenOfNode": [Function],
-    "findWhereUnwrapped": [Function],
-  },
-  "length": 1,
-  "node": <Modal
-    animation={true}
-    autoFocus={true}
-    backdrop={true}
-    bsClass="modal"
-    dialogComponentClass={[Function]}
-    enforceFocus={true}
-    keyboard={true}
-    manager={
-        ModalManager {
-            "containers": Array [],
-            "data": Array [],
-            "handleContainerOverflow": true,
-            "hideSiblingNodes": true,
-            "modals": Array [],
-          }
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders without crashing 1`] = `
+<Modal
+  animation={true}
+  autoFocus={true}
+  backdrop={true}
+  bsClass="modal"
+  dialogComponentClass={[Function]}
+  enforceFocus={true}
+  keyboard={true}
+  manager={
+    ModalManager {
+      "add": [Function],
+      "containers": Array [],
+      "data": Array [],
+      "handleContainerOverflow": true,
+      "hideSiblingNodes": true,
+      "isTopModal": [Function],
+      "modals": Array [],
+      "remove": [Function],
     }
-    onHide={[Function]}
-    renderBackdrop={[Function]}
-    restoreFocus={true}
-    show={true}>
-    <ModalHeader
-        aria-label="Close"
-        bsClass="modal-header"
-        closeButton={true}>
-        <ModalTitle
-            bsClass="modal-title"
-            componentClass="h4">
-            Test
-        </ModalTitle>
-    </ModalHeader>
-    <ModalBody
-        bsClass="modal-body"
-        componentClass="div">
-        <Icon
-            name="circle-o-notch" />
-    </ModalBody>
-    <ModalFooter
-        bsClass="modal-footer"
-        componentClass="div">
-        <Button
-            active={false}
-            block={false}
-            bsClass="btn"
-            bsStyle="default"
-            className="btn btn-default"
-            disabled={false}
-            onClick={[Function]}>
-            Zavřít
-        </Button>
-    </ModalFooter>
-</Modal>,
-  "nodes": Array [
-    <Modal
-      animation={true}
-      autoFocus={true}
-      backdrop={true}
-      bsClass="modal"
-      dialogComponentClass={[Function]}
-      enforceFocus={true}
-      keyboard={true}
-      manager={
-            ModalManager {
-                  "containers": Array [],
-                  "data": Array [],
-                  "handleContainerOverflow": true,
-                  "hideSiblingNodes": true,
-                  "modals": Array [],
-                }
-      }
-      onHide={[Function]}
-      renderBackdrop={[Function]}
-      restoreFocus={true}
-      show={true}>
-      <ModalHeader
-            aria-label="Close"
-            bsClass="modal-header"
-            closeButton={true}>
-            <ModalTitle
-                  bsClass="modal-title"
-                  componentClass="h4">
-                  Test
-            </ModalTitle>
-      </ModalHeader>
-      <ModalBody
-            bsClass="modal-body"
-            componentClass="div">
-            <Icon
-                  name="circle-o-notch" />
-      </ModalBody>
-      <ModalFooter
-            bsClass="modal-footer"
-            componentClass="div">
-            <Button
-                  active={false}
-                  block={false}
-                  bsClass="btn"
-                  bsStyle="default"
-                  className="btn btn-default"
-                  disabled={false}
-                  onClick={[Function]}>
-                  Zavřít
-            </Button>
-      </ModalFooter>
-</Modal>,
-  ],
-  "options": Object {},
-  "renderer": ReactShallowRenderer {
-    "_instance": ShallowComponentWrapper {
-      "_calledComponentWillUnmount": false,
-      "_compositeType": 0,
-      "_context": Object {},
-      "_currentElement": <ContainerDetail
-        location={
-                Object {
-                        "state": Object {
-                          "name": "Test",
-                        },
-                      }
-        }
-        match={
-                Object {
-                        "params": Object {
-                          "id": 4,
-                        },
-                      }
-        } />,
-      "_debugID": 1,
-      "_hostContainerInfo": null,
-      "_hostParent": null,
-      "_instance": ContainerDetail {
-        "_reactInternalInstance": [Circular],
-        "context": Object {},
-        "handleClose": [Function],
-        "handleFail": [Function],
-        "handleSuccess": [Function],
-        "model": Object {
-          "detailInfo": null,
-        },
-        "normalizeData": [Function],
-        "props": Object {
-          "location": Object {
-            "state": Object {
-              "name": "Test",
-            },
-          },
-          "match": Object {
-            "params": Object {
-              "id": 4,
-            },
-          },
-        },
-        "refs": Object {},
-        "render": [Function],
-        "setDetailInfo": [Function],
-        "state": null,
-        "updater": Object {
-          "enqueueCallback": [Function],
-          "enqueueCallbackInternal": [Function],
-          "enqueueElementInternal": [Function],
-          "enqueueForceUpdate": [Function],
-          "enqueueReplaceState": [Function],
-          "enqueueSetState": [Function],
-          "isMounted": [Function],
-          "validateCallback": [Function],
-        },
-      },
-      "_mountOrder": 1,
-      "_pendingCallbacks": null,
-      "_pendingElement": null,
-      "_pendingForceUpdate": false,
-      "_pendingReplaceState": false,
-      "_pendingStateQueue": null,
-      "_renderedComponent": NoopInternalComponent {
-        "_currentElement": <Modal
-          animation={true}
-          autoFocus={true}
-          backdrop={true}
-          bsClass="modal"
-          dialogComponentClass={[Function]}
-          enforceFocus={true}
-          keyboard={true}
-          manager={
-                    ModalManager {
-                              "containers": Array [],
-                              "data": Array [],
-                              "handleContainerOverflow": true,
-                              "hideSiblingNodes": true,
-                              "modals": Array [],
-                            }
-          }
-          onHide={[Function]}
-          renderBackdrop={[Function]}
-          restoreFocus={true}
-          show={true}>
-          <ModalHeader
-                    aria-label="Close"
-                    bsClass="modal-header"
-                    closeButton={true}>
-                    <ModalTitle
-                              bsClass="modal-title"
-                              componentClass="h4">
-                              Test
-                    </ModalTitle>
-          </ModalHeader>
-          <ModalBody
-                    bsClass="modal-body"
-                    componentClass="div">
-                    <Icon
-                              name="circle-o-notch" />
-          </ModalBody>
-          <ModalFooter
-                    bsClass="modal-footer"
-                    componentClass="div">
-                    <Button
-                              active={false}
-                              block={false}
-                              bsClass="btn"
-                              bsStyle="default"
-                              className="btn btn-default"
-                              disabled={false}
-                              onClick={[Function]}>
-                              Zavřít
-                    </Button>
-          </ModalFooter>
-</Modal>,
-        "_debugID": 2,
-        "_renderedOutput": <Modal
-          animation={true}
-          autoFocus={true}
-          backdrop={true}
-          bsClass="modal"
-          dialogComponentClass={[Function]}
-          enforceFocus={true}
-          keyboard={true}
-          manager={
-                    ModalManager {
-                              "containers": Array [],
-                              "data": Array [],
-                              "handleContainerOverflow": true,
-                              "hideSiblingNodes": true,
-                              "modals": Array [],
-                            }
-          }
-          onHide={[Function]}
-          renderBackdrop={[Function]}
-          restoreFocus={true}
-          show={true}>
-          <ModalHeader
-                    aria-label="Close"
-                    bsClass="modal-header"
-                    closeButton={true}>
-                    <ModalTitle
-                              bsClass="modal-title"
-                              componentClass="h4">
-                              Test
-                    </ModalTitle>
-          </ModalHeader>
-          <ModalBody
-                    bsClass="modal-body"
-                    componentClass="div">
-                    <Icon
-                              name="circle-o-notch" />
-          </ModalBody>
-          <ModalFooter
-                    bsClass="modal-footer"
-                    componentClass="div">
-                    <Button
-                              active={false}
-                              block={false}
-                              bsClass="btn"
-                              bsStyle="default"
-                              className="btn btn-default"
-                              disabled={false}
-                              onClick={[Function]}>
-                              Zavřít
-                    </Button>
-          </ModalFooter>
-</Modal>,
-      },
-      "_renderedNodeType": 1,
-      "_rootNodeID": 0,
-      "_topLevelWrapper": null,
-      "_updateBatchNumber": null,
-      "_warnedAboutRefsInRender": false,
-    },
-    "getRenderOutput": [Function],
-    "render": [Function],
-  },
-  "root": [Circular],
-  "unrendered": <ContainerDetail
-    location={
-        Object {
-            "state": Object {
-              "name": "Test",
-            },
-          }
-    }
-    match={
-        Object {
-            "params": Object {
-              "id": 4,
-            },
-          }
-    } />,
-}
+  }
+  onHide={[Function]}
+  renderBackdrop={[Function]}
+  restoreFocus={true}
+  show={true}
+>
+  <ModalHeader
+    bsClass="modal-header"
+    closeButton={true}
+    closeLabel="Close"
+  >
+    <ModalTitle
+      bsClass="modal-title"
+      componentClass="h4"
+    >
+      Test
+    </ModalTitle>
+  </ModalHeader>
+  <ModalBody
+    bsClass="modal-body"
+    componentClass="div"
+  >
+    <Icon
+      name="circle-o-notch"
+    />
+  </ModalBody>
+  <ModalFooter
+    bsClass="modal-footer"
+    componentClass="div"
+  >
+    <Button
+      active={false}
+      block={false}
+      bsClass="btn"
+      bsStyle="default"
+      className="btn btn-default"
+      disabled={false}
+      onClick={[Function]}
+    >
+      Zavřít
+    </Button>
+  </ModalFooter>
+</Modal>
 `;

@@ -3,8 +3,8 @@ import createHistory from 'history/createBrowserHistory'
 
 if (process.env.REACT_APP_GOOGLE_ANALYTICS_ID) {
   ReactGA.initialize(process.env.REACT_APP_GOOGLE_ANALYTICS_ID)
-  ReactGA.set({ page: location.pathname });
-  ReactGA.pageview(location.pathname);
+  ReactGA.set({ page: window.location.pathname });
+  ReactGA.pageview(window.location.pathname);
 }
 
 export const createGaHistroy = () => {

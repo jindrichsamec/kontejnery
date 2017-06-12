@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import 'font-awesome/css/font-awesome.min.css'
 import './assets/fonts.css'
 import Container from './Container'
-import Controller from './Controller'
+import Omnibox from './Omnibox/Omnibox'
 import Center from './Center'
 import ContainerDetail from './ContainerDetail'
 
@@ -46,7 +46,7 @@ export default observer(class App extends Component {
 
     return (
       <span>
-        <Controller onSearch={this.handleSearch} onLocate={this.handleLocate} />
+        <Omnibox onSearch={this.handleSearch} onLocate={this.handleLocate} />
         <div id="container">
           <div id="map">
             <GoogleMap

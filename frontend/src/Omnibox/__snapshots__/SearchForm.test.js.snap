@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SearchForm renders without crashing 1`] = `
+<DropdownButton
+  bsSize="large"
+  id="search-form"
+  title="Příštích 7 dní"
+>
+  <MenuItem
+    bsClass="dropdown"
+    disabled={false}
+    divider={false}
+    header={false}
+    onClick={[Function]}
+  >
+    Dnes
+  </MenuItem>
+  <MenuItem
+    bsClass="dropdown"
+    disabled={false}
+    divider={false}
+    header={false}
+    onClick={[Function]}
+  >
+    Zítra
+  </MenuItem>
+  <MenuItem
+    bsClass="dropdown"
+    disabled={false}
+    divider={false}
+    header={false}
+    onClick={[Function]}
+  >
+    Příštích 7 dní
+  </MenuItem>
+  <MenuItem
+    bsClass="dropdown"
+    disabled={false}
+    divider={false}
+    header={false}
+    onClick={[Function]}
+  >
+    Tento měsíc
+  </MenuItem>
+</DropdownButton>
+`;
