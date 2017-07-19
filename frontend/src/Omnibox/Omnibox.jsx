@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import {observable} from 'mobx'
+import {observer} from 'mobx-react'
 import SearchForm from './SearchForm'
-import Icon from '../Icon'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -18,47 +19,70 @@ const Wrapper = styled.div`
     width: 100%;
   }
 `
-const Omnibox = styled.div`
+const Content = styled.div`
   color: rgb(87,203,225);
   width: 100%;
-  padding: 0;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);
+  padding: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);
   background: #fff;
-  border: 1px solid rgb(87,203,225);
   animation: 3s linear 1s slidein;
 `
+const TermSelection = styled.a`
+  line-height: 40px;
+  margin: 0 8px;
+  display: block;
+  cursor: pointer;
+  font-size: 1.2em;
+  color: #000;
 
-const IconWrapper = styled.div`
-  width: 35px;
-  height: 35px;
-  display: inline-block;
-  background-clip: padding-box;
-  border-radius: 30px;
-  text-align: center;
-  font-weight: bold;
-  padding: 3px;
-  margin: 6px 10px;
-  border: 2px solid rgb(87,203,225);
+  &:after {
+    font: normal normal normal 14px/1 FontAwesome;
+    font-smoothing: antialiased;
+    content: "\f107";
+    position: absolute;
+    right: 10px;
+    display: inline-block;
+    line-height: 40px;
+  }
 `
 
-const Controller = ({ onSearch, onLocate }) => {
+const TermSelect = styled.div`
+  max-height: ${({open}) => open ? '200px' : '0'};
+  overflow: hidden;
+  transition: max-height 0.4s;
+`
+export default observer(class Omnibox extends React.Component {
 
-  return(
-     <Wrapper>
-      <Omnibox className="omnibox">
-          <IconWrapper>
-            <Icon name="logo" size={20}/>
-          </IconWrapper>
+  static propTypes = {
+    onSearch: PropTypes.func.isRequired,
+    onLocate: PropTypes.func.isRequired,
+  }
 
-          <SearchForm onSearch={onSearch} />
-      </Omnibox>
-    </Wrapper>
-  )
-}
+  obState = observable({
+    showMenu: false,
+    label: 'X'
+  })
 
-Controller.propTypes = {
-  onSearch: PropTypes.func.isRequired,
-  onLocate: PropTypes.func.isRequired,
-}
+  handleClick = () => {
+    console.log('menu click', this.obState.showMenu)
+    this.obState.showMenu = !this.obState.showMenu
+  }
 
-export default Controller
+  render() {
+    const { onSearch } = this.props
+
+    return(
+       <Wrapper>
+        <Content>
+          <TermSelection onClick={this.handleClick}>
+          {this.obState.showMenu ? 'Hledat kontejner na...' : this.obState.label}
+          </TermSelection>
+          <TermSelect open={this.obState.showMenu}>
+            <SearchForm onSearch={onSearch} />
+          </TermSelect>
+        </Content>
+      </Wrapper>
+    )
+  }
+
+})

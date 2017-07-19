@@ -3,9 +3,28 @@ import PropTypes from 'prop-types'
 import 'whatwg-fetch'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
-import { MenuItem, DropdownButton } from 'react-bootstrap'
 import { interval, convertIntervalToDates } from '../utils/DateInterval'
 import SearchQuery from '../model/SearchQuery'
+import styled from 'styled-components'
+
+
+const Menu = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`
+const MenuItem = styled.a`
+  padding: 5px 10px;
+  margin: 0;
+  display: block;
+  line-height: 40px;
+
+  &:hover {
+    color: #fff;
+    background: rgb(87,203,225);
+    cursor: pointer;
+  }
+`
 
 export default observer(class SearchForm extends Component {
 
@@ -87,14 +106,16 @@ export default observer(class SearchForm extends Component {
   }
 
   renderMenu =(value, index) => {
-    return <MenuItem key={index} onClick={() => this.handleClick(value)}>{this.getLabel(value)}</MenuItem>
+    return <MenuItem key={index} onClick={() => this.handleClick(value)}>
+      {this.getLabel(value)}
+    </MenuItem>
   }
 
   render() {
     return(
-      <DropdownButton bsSize="large" title={this.getLabel(this.obState.dateInterval)} id="search-form">
+      <Menu title={this.getLabel(this.obState.dateInterval)} id="search-form">
         {Object.keys(this.intervalLabels).map(this.renderMenu)}
-      </DropdownButton>
+      </Menu>
     )
   }
 
