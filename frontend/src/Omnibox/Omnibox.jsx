@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import {observable} from 'mobx'
 import {observer} from 'mobx-react'
 import SearchForm from './SearchForm'
+import Icon from '../Icon'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -27,45 +28,11 @@ const Content = styled.div`
   background: #fff;
   animation: 3s linear 1s slidein;
 `
-const TermSelection = styled.a`
-  line-height: 40px;
-  margin: 0 8px;
-  display: block;
-  cursor: pointer;
-  font-size: 1.2em;
-  color: #000;
-
-  &:after {
-    font: normal normal normal 14px/1 FontAwesome;
-    font-smoothing: antialiased;
-    content: "\f107";
-    position: absolute;
-    right: 10px;
-    display: inline-block;
-    line-height: 40px;
-  }
-`
-
-const TermSelect = styled.div`
-  max-height: ${({open}) => open ? '200px' : '0'};
-  overflow: hidden;
-  transition: max-height 0.4s;
-`
 export default observer(class Omnibox extends React.Component {
 
   static propTypes = {
     onSearch: PropTypes.func.isRequired,
     onLocate: PropTypes.func.isRequired,
-  }
-
-  obState = observable({
-    showMenu: false,
-    label: 'X'
-  })
-
-  handleClick = () => {
-    console.log('menu click', this.obState.showMenu)
-    this.obState.showMenu = !this.obState.showMenu
   }
 
   render() {
@@ -74,12 +41,7 @@ export default observer(class Omnibox extends React.Component {
     return(
        <Wrapper>
         <Content>
-          <TermSelection onClick={this.handleClick}>
-          {this.obState.showMenu ? 'Hledat kontejner na...' : this.obState.label}
-          </TermSelection>
-          <TermSelect open={this.obState.showMenu}>
-            <SearchForm onSearch={onSearch} />
-          </TermSelect>
+          <SearchForm onSearch={onSearch} onClick={this.handleClick} />
         </Content>
       </Wrapper>
     )
