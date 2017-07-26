@@ -25,23 +25,19 @@ const Content = styled.div`
   background: #fff;
   animation: 3s linear 1s slidein;
 `
-export default class Omnibox extends React.Component {
-
-  static propTypes = {
-    onSearch: PropTypes.func.isRequired,
-    onLocate: PropTypes.func.isRequired,
-  }
-
-  render() {
-    const { onSearch } = this.props
-
-    return(
-      <Wrapper>
-        <Content>
-          <SearchForm onSearch={onSearch} />
-        </Content>
-      </Wrapper>
-    )
-  }
-
+const Omnibox = ({onSearch}) => {
+  return(
+    <Wrapper>
+      <Content>
+        <SearchForm onSearch={onSearch} />
+      </Content>
+    </Wrapper>
+  )
 }
+
+Omnibox.propTypes = {
+  onSearch: PropTypes.func.isRequired,
+  onLocate: PropTypes.func.isRequired,
+}
+
+export default Omnibox

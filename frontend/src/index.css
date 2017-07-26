@@ -12,14 +12,6 @@ html, body, #container, #root {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-.top-marker {
-  z-index: 999;
-}
-
-.icon {
-  font-size: 3em;
-}
-
 .bs-callout {
     padding: 10px;
     margin: 10px 0;
