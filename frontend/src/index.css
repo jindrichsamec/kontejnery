@@ -12,18 +12,6 @@ html, body, #container, #root {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
 }
 
-.top-marker {
-  z-index: 999;
-}
-
-.icon {
-  font-size: 3em;
-}
-
-.fa-circle-o-notch {
-  animation: spinner infinite 1s linear;
-}
-
 .bs-callout {
     padding: 10px;
     margin: 10px 0;
@@ -38,18 +26,4 @@ html, body, #container, #root {
 
 .bs-callout-info {
   border-left-color: #1b809e;
-}
-
-.omnibox .dropdown-toggle.btn-default,
-.omnibox .dropdown-toggle.btn-default:hover,
-.omnibox .dropdown-toggle.btn-default:focus,
-.omnibox .dropdown-toggle.btn-default:active {
-  background-color: transparent;
-  border: 0px;
-  box-shadow: none;
-}
-
-@keyframes spinner {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }
