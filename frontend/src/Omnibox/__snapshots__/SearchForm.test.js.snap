@@ -1,46 +1,40 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SearchForm renders without crashing 1`] = `
-<DropdownButton
-  bsSize="large"
-  id="search-form"
-  title="Příštích 7 dní"
->
-  <MenuItem
-    bsClass="dropdown"
-    disabled={false}
-    divider={false}
-    header={false}
-    onClick={[Function]}
-  >
-    Dnes
-  </MenuItem>
-  <MenuItem
-    bsClass="dropdown"
-    disabled={false}
-    divider={false}
-    header={false}
-    onClick={[Function]}
-  >
-    Zítra
-  </MenuItem>
-  <MenuItem
-    bsClass="dropdown"
-    disabled={false}
-    divider={false}
-    header={false}
+<div>
+  <styled.a
     onClick={[Function]}
   >
     Příštích 7 dní
-  </MenuItem>
-  <MenuItem
-    bsClass="dropdown"
-    disabled={false}
-    divider={false}
-    header={false}
-    onClick={[Function]}
+  </styled.a>
+  <styled.div
+    open={false}
   >
-    Tento měsíc
-  </MenuItem>
-</DropdownButton>
+    <styled.ul
+      id="search-form"
+      title="Příštích 7 dní"
+    >
+      <styled.a
+        onClick={[Function]}
+      >
+        Dnes
+      </styled.a>
+      <styled.a
+        onClick={[Function]}
+      >
+        Zítra
+      </styled.a>
+      <styled.a
+        onClick={[Function]}
+      >
+        Příštích 7 dní
+      </styled.a>
+      <styled.a
+        onClick={[Function]}
+      >
+        Tento měsíc
+      </styled.a>
+    </styled.ul>
+  </styled.div>
+</div>
 `;

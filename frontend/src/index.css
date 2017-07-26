@@ -20,10 +20,6 @@ html, body, #container, #root {
   font-size: 3em;
 }
 
-.fa-circle-o-notch {
-  animation: spinner infinite 1s linear;
-}
-
 .bs-callout {
     padding: 10px;
     margin: 10px 0;
@@ -38,18 +34,4 @@ html, body, #container, #root {
 
 .bs-callout-info {
   border-left-color: #1b809e;
-}
-
-.omnibox .dropdown-toggle.btn-default,
-.omnibox .dropdown-toggle.btn-default:hover,
-.omnibox .dropdown-toggle.btn-default:focus,
-.omnibox .dropdown-toggle.btn-default:active {
-  background-color: transparent;
-  border: 0px;
-  box-shadow: none;
-}
-
-@keyframes spinner {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
 }

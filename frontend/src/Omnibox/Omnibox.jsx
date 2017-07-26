@@ -1,9 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {observable} from 'mobx'
-import {observer} from 'mobx-react'
 import SearchForm from './SearchForm'
-import Icon from '../Icon'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -28,7 +25,7 @@ const Content = styled.div`
   background: #fff;
   animation: 3s linear 1s slidein;
 `
-export default observer(class Omnibox extends React.Component {
+export default class Omnibox extends React.Component {
 
   static propTypes = {
     onSearch: PropTypes.func.isRequired,
@@ -39,12 +36,12 @@ export default observer(class Omnibox extends React.Component {
     const { onSearch } = this.props
 
     return(
-       <Wrapper>
+      <Wrapper>
         <Content>
-          <SearchForm onSearch={onSearch} onClick={this.handleClick} />
+          <SearchForm onSearch={onSearch} />
         </Content>
       </Wrapper>
     )
   }
 
-})
+}
