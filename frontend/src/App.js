@@ -3,13 +3,12 @@ import GoogleMap from 'google-map-react'
 import { observable } from 'mobx';
 import { observer } from 'mobx-react'
 import { Route } from 'react-router-dom';
-import 'bootstrap/dist/css/bootstrap.min.css'
-import 'font-awesome/css/font-awesome.min.css'
-import './assets/fonts.css'
 import Container from './Container'
 import Omnibox from './Omnibox/Omnibox'
 import Center from './Center'
 import ContainerDetail from './ContainerDetail'
+import Footer from './ui/Footer'
+import Icon from './Icon'
 
 export default observer(class App extends Component {
 
@@ -66,6 +65,10 @@ export default observer(class App extends Component {
               })}
             </GoogleMap>
             <Route path="/kontejner/:slug" component={ContainerDetail} />
+            <Footer>
+              S <Icon name="heart" /> vytvořil <a href="https://www.xjs.cz" title="Jinřich Samec">Jindřich Samec</a>.
+              Díky za každé <a href="https://www.xjs.cz/#contact" title="Jindřich Samec - kontakt">hlášení chyby</a>.
+            </Footer>
           </div>
         </div>
       </span>
