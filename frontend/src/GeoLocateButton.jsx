@@ -4,6 +4,7 @@ import { observer } from 'mobx-react'
 import { observable } from 'mobx'
 import { Button } from 'react-bootstrap'
 import Icon from './Icon'
+import Spinner from './Spinner'
 
 export default observer(class GeoLocationButton extends Component {
 
@@ -50,7 +51,7 @@ export default observer(class GeoLocationButton extends Component {
     }
 
     return <Button type="button" bsStyle="success" onClick={this._handleClick} disabled={this.obsState.disabled}>
-      <Icon name={this.obsState.disabled ? 'circle-o-notch' : 'location-arrow'} /> Moje poloha
+       {this.obsState.disabled ? <Spinner /> : <Icon name="location-arrow" />} Moje poloha
     </Button>
   }
 })
