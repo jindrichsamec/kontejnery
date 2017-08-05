@@ -1,11 +1,9 @@
 import React from 'react'
 import Icon from './Icon'
-// import {containerStyle} from './Container/ContainerStyle'
+import Marker from './ui/Marker'
 
-const Center = (props) => {
-  return <div className="top-marker progress-bar progress-bar-striped">
+export default () => {
+  return <Marker>
     <Icon name="street-view" size={18} />
-  </div>;
+  </Marker>;
 }
-
-export default Center;
