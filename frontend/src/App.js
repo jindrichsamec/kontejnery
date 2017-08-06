@@ -10,6 +10,7 @@ import ContainerDetail from './ContainerDetail'
 import Footer from './ui/Footer'
 import Icon from './Icon'
 import MapWrapper from './ui/MapWrapper'
+import Alert from './ui/Alert'
 
 export default observer(class App extends Component {
 
@@ -37,6 +38,12 @@ export default observer(class App extends Component {
     history.push(`/kontejner/${slug}`, {name});
   }
 
+  renderNoContainerAlert() {
+    return <Alert>
+      Pro zvolený termín nejsou přistavené žádné kontejnery
+    </Alert>
+  }
+
   render() {
     const { defaultCenter, defaultZoom, apiKey } = this.props;
     const { center, containers } = this.model;
@@ -47,6 +54,7 @@ export default observer(class App extends Component {
     return (
       <span>
         <Omnibox onSearch={this.handleSearch} onLocate={this.handleLocate} />
+        {containers.length === 0 && this.renderNoContainerAlert()}
         <MapWrapper>
           <GoogleMap
             bootstrapURLKeys={bootstrapURLKeys}
