@@ -6,6 +6,7 @@ import Icon from './Icon'
 import { formatTimeInterval } from './utils/DateInterval'
 import { formatDate, formatDayName } from './utils/DateTime'
 import SearchQuery from './model/SearchQuery'
+import { InfoBoxDanger, InfoBoxInfo } from './ui/InfoBox'
 
 export default observer(class ContainerDetail extends Component {
 
@@ -76,14 +77,14 @@ export default observer(class ContainerDetail extends Component {
 
   renderInfo() {
     return <div>
-      <div className="bs-callout bs-callout-info small help-block">
+      <InfoBoxInfo className="small help-block">
         <strong>Do kontejneru patří</strong>
         <p>starý nábytek, koberce a linolea, zrcadla, umyvadla, vany a WC mísy, staré sportovní náčiní, autosklo a kovové předměty.</p>
-      </div>
-      <div className="bs-callout bs-callout-danger small help-block">
+      </InfoBoxInfo>
+      <InfoBoxDanger className="small help-block">
         <strong>Do kontejneru nepatří</strong>
         <p>odkládat živnostenský odpad, nebezpečný odpad (např.: autobaterie, zářivky, barvy, rozpouštědla, motorové oleje a obaly od nich), bioodpad, stavební odpad, dále pak pneumatiky, elektrospotřebiče, televizory a PC monitory, počítače, lednice, mrazáky a sporáky.</p>
-      </div>
+      </InfoBoxDanger>
       <p className="small">
         Zdroj: <a href="https://www.praha8.cz/kontejnery-na-velkoobjemovy-odpad.html" title="MČ Praha 8: Velkoobjemové kontejnery - Kontejnery na velkoobjemový odpad">
           https://www.praha8.cz/kontejnery-na-velkoobjemovy-odpad.html

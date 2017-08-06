@@ -1,29 +1,8 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
-html, body, #container, #root {
+html, body {
   height: 100%;
   width: 100%;
   overflow: hidden;
   font-family: 'Open Sans', sans-serif;
-}
-#map, #root {
-  width: auto;
-  height: 100%;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-}
-
-.bs-callout {
-    padding: 10px;
-    margin: 10px 0;
-    border: 1px solid #eee;
-    border-left-width: 5px;
-    border-radius: 3px;
-}
-
-.bs-callout-danger {
-  border-left-color: #ce4844;
-}
-
-.bs-callout-info {
-  border-left-color: #1b809e;
 }

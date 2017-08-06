@@ -9,6 +9,7 @@ import Center from './Center'
 import ContainerDetail from './ContainerDetail'
 import Footer from './ui/Footer'
 import Icon from './Icon'
+import MapWrapper from './ui/MapWrapper'
 
 export default observer(class App extends Component {
 
@@ -46,31 +47,34 @@ export default observer(class App extends Component {
     return (
       <span>
         <Omnibox onSearch={this.handleSearch} onLocate={this.handleLocate} />
-        <div id="container">
-          <div id="map">
-            <GoogleMap
-              bootstrapURLKeys={bootstrapURLKeys}
-              defaultCenter={defaultCenter}
-              defaultZoom={defaultZoom}
-              hoverDistance={24}
-              center={center}>
+        <MapWrapper>
+          <GoogleMap
+            bootstrapURLKeys={bootstrapURLKeys}
+            defaultCenter={defaultCenter}
+            defaultZoom={defaultZoom}
+            hoverDistance={24}
+            center={center}>
 
-              {center && <Center {...center} />}
-              {containers.map((container) => {
-                return (<Container
-                    {...container}
-                    {...container.coordinates}
-                    key={container.slug}
-                    onClick={this.handleContainerClick} />)
-              })}
-            </GoogleMap>
-            <Route path="/kontejner/:slug" component={ContainerDetail} />
-            <Footer>
+            {center && <Center {...center} />}
+            {containers.map((container) => {
+              return (<Container
+                  {...container}
+                  {...container.coordinates}
+                  key={container.slug}
+                  onClick={this.handleContainerClick} />)
+            })}
+          </GoogleMap>
+          <Route path="/kontejner/:slug" component={ContainerDetail} />
+          <Footer>
+            <span className="hidden-xs">
               S <Icon name="heart" /> vytvořil <a href="https://www.xjs.cz" title="Jinřich Samec">Jindřich Samec</a>.
-              Díky za každé <a href="https://www.xjs.cz/#contact" title="Jindřich Samec - kontakt">hlášení chyby</a>.
-            </Footer>
-          </div>
-        </div>
+              Díky za každé <a href="https://www.xjs.cz/#contact" title="Jindřich Samec - kontakt">nahlášení chyby</a>.
+            </span>
+            <span className="visible-xs-inline">
+              S <Icon name="heart" /> vytvořil <a href="https://www.xjs.cz" title="Jinřich Samec">JS</a>.
+            </span>
+          </Footer>
+        </MapWrapper>
       </span>
     );
   }
