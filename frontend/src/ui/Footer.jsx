@@ -3,12 +3,14 @@ import styled from 'styled-components'
 export default styled.div`
   position: fixed;
   bottom: 0;
-  left 70px;
-  background: rgba(255, 255, 255, 0.5);
-  font-size: 9pt;
-  padding: 1px 5px;
+  left: 75px;
+  background: rgb(255, 255, 255);
+  font-size: 8pt;
+  padding: 0px 5px;
   position: absolute;
   display: inline-block;
+  font-family: Roboto;
+  opacity: 0.7;
 
   .fa-heart {
     color: #be1931;
