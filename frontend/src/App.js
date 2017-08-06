@@ -25,7 +25,13 @@ export default observer(class App extends Component {
     center: null
   });
 
+  constructor(props) {
+    super(props)
+    this.initialized = false
+  }
+
   handleSearch = (data) => {
+    this.initialized = true
     this.model.containers = data
   }
 
@@ -38,9 +44,13 @@ export default observer(class App extends Component {
     history.push(`/kontejner/${slug}`, {name});
   }
 
+  canShowAlert() {
+    return (this.model.containers.length === 0 && this.initialized)
+  }
+
   renderNoContainerAlert() {
     return <Alert>
-      Pro zvolený termín nejsou přistavené žádné kontejnery
+      Ve zvoleném termínu nejsou přistaveny žádné kontejnery :(
     </Alert>
   }
 
@@ -54,7 +64,7 @@ export default observer(class App extends Component {
     return (
       <span>
         <Omnibox onSearch={this.handleSearch} onLocate={this.handleLocate} />
-        {containers.length === 0 && this.renderNoContainerAlert()}
+        {this.canShowAlert() && this.renderNoContainerAlert()}
         <MapWrapper>
           <GoogleMap
             bootstrapURLKeys={bootstrapURLKeys}
