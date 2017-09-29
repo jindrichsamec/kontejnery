@@ -2,6 +2,7 @@
 from datetime import datetime
 import re
 from bs4 import BeautifulSoup
+from flask import current_app
 
 def parse(html_doc):
     """Parses HTML string and return data"""
@@ -16,8 +17,15 @@ def parse(html_doc):
 
 
 def parse_table(table, containers_list):
-    return [parse_row(tr) for tr in table.find_all('tr') if 'mcp8TableHeaderRow' not in tr['class']]
+    rows = []
+    for tr in table.find_all('tr'):
+        if 'mcp8TableHeaderRow' not in tr['class']:
+            try:
+                rows.append(parse_row(tr))
+            except ValueError as e:
+                current_app.logger.error('Cant parse row {}, becasue {}'.format(tr, e))
 
+    return rows
 
 def parse_row(row):
     tds = row.find_all('td')
