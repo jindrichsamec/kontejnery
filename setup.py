@@ -24,6 +24,7 @@ setup(
         "flask-bootstrap",
         "flask-restful",
         'flask-cors',
+        'flask-BasicAuth',
         "passlib",
         "bs4",
         'python-slugify',

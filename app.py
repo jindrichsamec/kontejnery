@@ -20,6 +20,9 @@ def create_app():
   app.config['MAPBOX_ACCESS_TOKEN'] = os.environ.get('MAPBOX_ACCESS_TOKEN')
   app.config['LETS_ENCRYPT_SECRET'] = os.environ.get('LETS_ENCRYPT_SECRET')
 
+  app.config['BASIC_AUTH_USERNAME'] = os.environ.get('HTTP_AUTH_USERNAME')
+  app.config['BASIC_AUTH_PASSWORD'] = os.environ.get('HTTP_AUTH_PASSWORD')
+
   cors = CORS(app, resources={r"/api/*": {"origins": "*"}})
   register_logger(app)
   register_encoder(app)
