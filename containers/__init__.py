@@ -18,13 +18,7 @@ def register_container(app):
 
     @app.route('/')
     def index():
-        pages = [
-            {'url': '/api/list', 'label': 'List of containers'},
-            {'url': '/api/1', 'label': 'Detail of container'},
-            {'url': '/admin', 'label': 'Admin'}
-        ]
-        result = ['<a href="{}">{}</a>'.format(page['url'], page['label']) for page in pages]
-        return '<br>'.join(result)
+        return 'Velkoobjemkay API'
 
     @app.cli.command()
     def crawler():
