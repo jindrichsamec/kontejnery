@@ -1,8 +1,7 @@
 import React, { Component } from 'react'
-import { Modal, Button } from 'react-bootstrap'
+import { Dialog, FlatButton, CircularProgress } from 'material-ui'
 import { observable } from 'mobx'
 import { observer } from 'mobx-react'
-import Icon from './Icon'
 import { formatTimeInterval } from './utils/DateInterval'
 import { formatDate, formatDayName } from './utils/DateTime'
 import SearchQuery from './model/SearchQuery'
@@ -34,11 +33,11 @@ export default observer(class ContainerDetail extends Component {
     }
   }
 
-  handleSuccess = (response) => {
-    response.json().then(json => {
-      const data = this.normalizeData(json.data)
-      this.setDetailInfo(data)
-    })
+  handleSuccess = async (response) => {
+    const json = await response.json();
+
+    const data = this.normalizeData(json.data)
+    this.setDetailInfo(data)
   }
 
   handleFail = () => {
@@ -52,6 +51,17 @@ export default observer(class ContainerDetail extends Component {
 
   setDetailInfo = (info) => {
     this.model.detailInfo = info
+  }
+
+  getModalTitle() {
+    const {location: {state}} = this.props
+    let name = state ? state.name : ''
+
+    const { detailInfo } = this.model
+    if (name === '') {
+      name = detailInfo ? detailInfo.name : ''
+    }
+    return name
   }
 
   renderTerms(info) {
@@ -91,31 +101,17 @@ export default observer(class ContainerDetail extends Component {
         </a>
       </p>
     </div>;
-
   }
 
   render() {
-    const {location: {state}} = this.props
-    let name = state ? state.name : ''
-
     const { detailInfo } = this.model
-    if (name === '') {
-      name = detailInfo ? detailInfo.name : ''
-    }
-
-
-    return (<Modal show={true} onHide={this.handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>{name}</Modal.Title>
-      </Modal.Header>
-      <Modal.Body>
-        {detailInfo === null ? <Icon name="circle-o-notch" /> : this.renderTerms(detailInfo)}
+    const actions = [<FlatButton onClick={this.handleClose}>Zavřít</FlatButton>]
+    return (
+      <Dialog open={true} onHide={this.handleClose} title={this.getModalTitle()} actions={actions} autoScrollBodyContent={true}>
+        {detailInfo === null ? <CircularProgress /> : this.renderTerms(detailInfo)}
         {detailInfo && this.renderInfo()}
-      </Modal.Body>
-      <Modal.Footer>
-        <Button className="btn btn-default" onClick={this.handleClose}>Zavřít</Button>
-      </Modal.Footer>
-    </Modal>);
+      </Dialog>
+    );
   }
 
 })

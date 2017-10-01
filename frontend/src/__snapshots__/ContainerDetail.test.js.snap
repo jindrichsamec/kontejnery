@@ -1,66 +1,41 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders without crashing 1`] = `
-<Modal
-  animation={true}
-  autoFocus={true}
-  backdrop={true}
-  bsClass="modal"
-  dialogComponentClass={[Function]}
-  enforceFocus={true}
-  keyboard={true}
-  manager={
-    ModalManager {
-      "add": [Function],
-      "containers": Array [],
-      "data": Array [],
-      "handleContainerOverflow": true,
-      "hideSiblingNodes": true,
-      "isTopModal": [Function],
-      "modals": Array [],
-      "remove": [Function],
-    }
+<Dialog
+  actions={
+    Array [
+      <FlatButton
+        disabled={false}
+        fullWidth={false}
+        labelPosition="after"
+        labelStyle={Object {}}
+        onClick={[Function]}
+        onKeyboardFocus={[Function]}
+        onMouseEnter={[Function]}
+        onMouseLeave={[Function]}
+        onTouchStart={[Function]}
+        primary={false}
+        secondary={false}
+    >
+        Zavřít
+    </FlatButton>,
+    ]
   }
+  autoDetectWindowHeight={true}
+  autoScrollBodyContent={true}
+  modal={false}
   onHide={[Function]}
-  renderBackdrop={[Function]}
-  restoreFocus={true}
-  show={true}
+  open={true}
+  repositionOnUpdate={true}
+  title="Test"
 >
-  <ModalHeader
-    bsClass="modal-header"
-    closeButton={true}
-    closeLabel="Close"
-  >
-    <ModalTitle
-      bsClass="modal-title"
-      componentClass="h4"
-    >
-      Test
-    </ModalTitle>
-  </ModalHeader>
-  <ModalBody
-    bsClass="modal-body"
-    componentClass="div"
-  >
-    <Icon
-      name="circle-o-notch"
-    />
-  </ModalBody>
-  <ModalFooter
-    bsClass="modal-footer"
-    componentClass="div"
-  >
-    <Button
-      active={false}
-      block={false}
-      bsClass="btn"
-      bsStyle="default"
-      className="btn btn-default"
-      disabled={false}
-      onClick={[Function]}
-    >
-      Zavřít
-    </Button>
-  </ModalFooter>
-</Modal>
+  <CircularProgress
+    max={100}
+    min={0}
+    mode="indeterminate"
+    size={40}
+    thickness={3.5}
+    value={0}
+  />
+</Dialog>
 `;
