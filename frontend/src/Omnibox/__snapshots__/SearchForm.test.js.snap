@@ -15,21 +15,25 @@ exports[`SearchForm renders without crashing 1`] = `
       title="Příštích 7 dní"
     >
       <styled.a
+        key="0"
         onClick={[Function]}
       >
         Dnes
       </styled.a>
       <styled.a
+        key="1"
         onClick={[Function]}
       >
         Zítra
       </styled.a>
       <styled.a
+        key="2"
         onClick={[Function]}
       >
         Příštích 7 dní
       </styled.a>
       <styled.a
+        key="3"
         onClick={[Function]}
       >
         Tento měsíc
