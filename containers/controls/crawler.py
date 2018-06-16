@@ -18,6 +18,7 @@ def run_crawler():
 
     total = {'containers': 0, 'terms': 0}
     for container in containers:
+        current_app.logger.info('Processing container {} {} - {}'.format(container['name'], container['datetime_from'], container['datetime_to']))
         containers, terms = create_container(container['name'], container['datetime_from'], container['datetime_to'])
         total['containers'] += containers
         total['terms'] += terms
