@@ -1,15 +1,16 @@
 version: 2
 jobs:
   build:
-    working_directory: ~/kontejnery/frontend
     docker:
     - image: circleci/node:8
     steps:
+    - checkout
+    - working_directory: ~/frontend
     - run: yarn install
     - run: yarn test
 
   deploy:
-    working_directory: ~/kontejnery/frontend
+    working_directory: ~/frontend
     docker:
     - image: circleci/node:8
     steps:
