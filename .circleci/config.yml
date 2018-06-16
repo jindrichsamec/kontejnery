@@ -10,6 +10,8 @@ jobs:
 
   deploy:
     working_directory: ~/kontejnery/frontend
+    docker:
+    - image: circleci/node:8
     steps:
     - run:
       command: |
