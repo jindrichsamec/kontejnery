@@ -12,7 +12,7 @@ import os
 def create_app():
   app = Flask(__name__)
   app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY')
-  app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'postgresql+psycopg2://localhost:5432/containers'
+  app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL') or 'postgresql+psycopg2://localhost:32768/containers'
   app.config['SQLALCHEMY_COMMIT_ON_TEARDOWN'] = True
   app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
   app.config['MAPBOX_MAP_ID'] = 'mapbox.streets'
