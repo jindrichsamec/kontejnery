@@ -8,7 +8,8 @@ version: 2
 # configuration as a reference rather than using it in production, though in most
 # cases it should duplicate the execution of your original 1.0 config.
 defaults: &defaults
-  working_directory: ~/frontend
+  # working_directory: ~/frontend
+
   # In CircleCI 1.0 we used a pre-configured image with a large number of languages and other packages.
   # In CircleCI 2.0 you can now specify your own image, or use one of our pre-configured images.
   # The following configuration line tells CircleCI to use the specified docker image as the runtime environment for you job.
@@ -46,11 +47,17 @@ jobs:
     # Dependencies
     #   This would typically go in either a build or a build-and-test job when using workflows
     # Restore the dependency cache
-    - run: yarn install
+    - run:
+      command: yarn install
+      working_directory: frontend
+    - run:
+      command: yarn test
+      working_directory: frontend
+
     # Test
     #   This would typically be a build job when using workflows, possibly combined with build
     # This is based on your 1.0 configuration file or project settings
-    - run: yarn test
+
     # Deployment
     # Your existing circle.yml file contains deployment steps.
     # The config translation tool does not support translating deployment steps
