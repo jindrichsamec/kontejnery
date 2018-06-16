@@ -1,0 +1,64 @@
+version: 2
+# This configuration was automatically generated from a CircleCI 1.0 config.
+# It should include any build commands you had along with commands that CircleCI
+# inferred from your project structure. We strongly recommend you read all the
+# comments in this file to understand the structure of CircleCI 2.0, as the idiom
+defaults: &defaults
+  docker:
+
+    command: /sbin/init
+
+jobs:
+  build:
+    docker:
+    - image: circleci/node:8
+
+    steps:
+    - checkout
+    - run:
+        command: yarn install
+        working_directory: frontend
+    - run:
+        command: yarn test
+        working_directory: frontend
+    - run:
+        command: NODE_ENV=production yarn run build
+        working_directory: frontend
+
+    - persist_to_workspace:
+          root: ~/project/frontend
+          paths:
+            - build/*
+  deploy:
+    docker:
+    - image: circleci/python:3.6.5-jessie
+    steps:
+    - attach_workspace:
+        at: ~/frontend
+    - run:
+        name: Install AWS-CLI
+        command: |
+            sudo apt-get install python-dev python-pip
+            sudo pip install awscli
+    - run:
+        name: Check AWS-CLI
+        command: aws --version
+    - run:
+        name: Deploy to S3 if tests pass and branch is Master
+        command: |
+          aws configure set default.s3.signature_version s3v4
+          aws s3 sync ~/frontend/build s3://www.velkoobjemaky.cz/ --delete --region=eu-central-1 --acl=public-read
+          aws configure set preview.cloudfront true
+          aws cloudfront create-invalidation --distribution-id $AWS_DISTRIBUTION_ID --paths / /index.html
+
+workflows:
+  version: 2
+  build-deploy:
+    jobs:
+      - build
+      - deploy:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
