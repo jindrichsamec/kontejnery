@@ -1,11 +1,7 @@
 version: 2
-
-defaults: &defaults
-  working_directory: ~/kontejnery/frontend
-
 jobs:
   build:
-    <<: *defaults
+    working_directory: ~/kontejnery/frontend
     docker:
     - image: circleci/node:8
     steps:
@@ -13,7 +9,7 @@ jobs:
     - run: yarn test
 
   deploy:
-    <<: *defaults
+    working_directory: ~/kontejnery/frontend
     steps:
     - run:
       command: |
