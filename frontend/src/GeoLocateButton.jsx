@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { observer } from 'mobx-react'
 import { observable } from 'mobx'
-import { Button } from 'react-bootstrap'
 import Icon from './Icon'
 import Spinner from './Spinner'
+import Button from '@material-ui/core/Button'
+import CircularProgress from '@material-ui/core/CircularProgress'
 
 export default observer(class GeoLocationButton extends Component {
 
@@ -49,9 +50,15 @@ export default observer(class GeoLocationButton extends Component {
     if (!this._isSupportedGeoLocation()) {
       return null;
     }
-
-    return <Button type="button" bsStyle="success" onClick={this._handleClick} disabled={this.obsState.disabled}>
-       {this.obsState.disabled ? <Spinner /> : <Icon name="location-arrow" />} Moje poloha
-    </Button>
+    const { disabled } = this.obsState
+    // <Button type="button" bsStyle="success" onClick={this._handleClick}>
+    return (
+      <div style={{ position: 'fixed', bottom: '10px', right: '10px', zIndex: '1' }}>
+        <Button onClick={this._handleClick} disabled={disabled} variant="fab" color="primary" aria-label="add">
+          <Icon name="location-arrow" />
+        </Button>
+        {disabled && <CircularProgress size={68} style={{position: 'absolute', top: -6, left: -6, zIndex: 1}}/>}
+      </div>
+    )
   }
 })

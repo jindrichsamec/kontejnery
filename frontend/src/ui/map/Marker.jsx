@@ -10,7 +10,6 @@ export default styled.div`
   border-radius: ${SIZE}px;
   text-align: center;
   font-weight: bold;
-  padding: 4px 3px;
   border: 1px solid;
   background: white;
   z-index: +10;

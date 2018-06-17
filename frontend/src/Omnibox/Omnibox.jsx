@@ -10,6 +10,7 @@ const Wrapper = styled.div`
   position: absolute;
   z-index: 300;
   border: 10px solid transparent;
+  color: 0;
 
   @media only screen
   and (max-width: 414px)
@@ -37,7 +38,6 @@ const Omnibox = ({onSearch}) => {
 
 Omnibox.propTypes = {
   onSearch: PropTypes.func.isRequired,
-  onLocate: PropTypes.func.isRequired,
 }
 
 export default Omnibox
